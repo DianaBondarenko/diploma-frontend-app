@@ -1,0 +1,40 @@
+{
+  "extends": ["react-app", "airbnb", "plugin:jsx-a11y/recommended", "prettier"],
+  "plugins": ["jsx-a11y", "prettier"],
+  "ignorePatterns": ["node_modules/"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "no-useless-catch": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "import/no-named-as-default": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "react/forbid-prop-types": 1,
+    "react/prop-types": 1,
+    "import/extensions": "off",
+    "react/jsx-pascal-case": 1,
+    "react/destructuring-assignment": 1,
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/function-component-definition": "off",
+    "import/no-unresolved": "off",
+    "consistent-return": "off",
+    "arrow-body-style": "off",
+    "global-require": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      }
+    }
+  }
+}

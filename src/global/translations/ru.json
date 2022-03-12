@@ -1,0 +1,33 @@
+{
+  "translation": {
+    "LoginPage": {
+      "TITLE": "Вход / Регистрация",
+      "PHONE_LABEL": "Ваш телефон",
+      "SUBMIT_BUTTON_TEXT": "Подтвердить номер",
+      "ERROR_CHECKBOX": "Это поле обязательное к заполнению",
+      "USER_AGREEMENT": "Пользовательского Соглашения",
+      "BACK_TEXT": "Назад",
+      "ACCEPT": "Я принимаю условия ",
+      "PHONE_EMPTY_ERROR": "Введите номер телефона",
+      "PHONE_INVALID_ERROR": "Введите корректный номер телефона"
+    },
+    "CodeConfirmation": {
+      "SEND_TO_PHONE": "Введите код из смс. Если не пришел сразу, посмотрите в меню смс Спам и заблокированные ",
+      "CODE": "Введите код",
+      "ERROR_CODE": "Код не тот. Запросите повторно",
+      "CONFIRM": "Подтвердить",
+      "SEND_ONE_MORE": "Отправить еще раз через 00:",
+      "SEND_ONE_MORE_ACTIVE": "Отправить еще раз",
+      "CODE_CONFIRMATION_TITLE": "Подтвердите ваш номер телефона"
+    },
+    "Header": {
+      "LOGOUT_BTN_TEXT": "Выйти"
+    },
+    "Footer": {
+      "DESCRIPTION": "С 8:00 до 20:00 без выходных"
+    },
+    "OrdersPage": {
+      "TITLE": "Список заказов"
+    }
+  }
+}
