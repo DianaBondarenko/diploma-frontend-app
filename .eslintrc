@@ -26,7 +26,8 @@
     "arrow-body-style": "off",
     "global-require": "off",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-shadow": "off"
   },
   "settings": {
     "import/resolver": {

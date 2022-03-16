@@ -7,9 +7,9 @@ export const ModalWindowContainer = styled('div')`
   position: fixed;
   width: max-content;
   z-index: 300;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%);
   border-radius: 8px;
   box-shadow: 0 4px 10px rgb(144 154 170 / 30%);
 `;

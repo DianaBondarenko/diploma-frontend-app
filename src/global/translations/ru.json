@@ -27,7 +27,49 @@
       "DESCRIPTION": "С 8:00 до 20:00 без выходных"
     },
     "OrdersPage": {
-      "TITLE": "Список заказов"
+      "TITLE": "Список заказов",
+      "OrdersTable": {
+        "headerTitles": {
+          "TIMER": "Таймер",
+          "ORDER": "Заказ",
+          "CREATED_AT": "Дата создания",
+          "PHONE": "Телефон",
+          "STATUS": "Статус",
+          "AMOUNT": "Сумма"
+        },
+        "statusTitles": {
+          "UNCONFIRMED": "Неподтвержден",
+          "COLLECTING": "В сборке",
+          "READY": "Готов к выдаче",
+          "COMPLETED": "Получен",
+          "CANCELED": "Отменен"
+        }
+      },
+      "OrderDetailedModal": {
+        "controls": {
+          "COLLECTING": "В сборке",
+          "READY": "Готов к выдаче",
+          "CANCEL": "Отменить",
+          "COMPLETED": "Получен"
+        },
+        "DETAILS_TITLE": "Детали заказа",
+        "DELIVERY_TYPE_TITLE": "Способ доставки:",
+        "PAYMENT_TYPE_TITLE": "Оплата:",
+        "DELIVERY_TITLE": "Доставка",
+        "SELF_DELIVERY_TITLE": "Самовывоз",
+        "KASPI_PAY_TITLE": "Оплачен на сайте",
+        "IN_PLACE_PAY_TITLE": "Оплата в аптеке",
+        "PRODUCTS_TABLE_TITLE": "Товары",
+        "ProductsTable": {
+          "headerTitles": {
+            "NUM": "№",
+            "PRODUCT_INFO": "Товар",
+            "VENDOR_CODE": "Артикул",
+            "QUANTITY": "Количество",
+            "TOTAL_AMOUNT": "Цена сервиса"
+          }
+        }
+      }
     }
   }
 }

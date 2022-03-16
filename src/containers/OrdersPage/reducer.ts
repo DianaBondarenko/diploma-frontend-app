@@ -14,11 +14,6 @@ const initialState: OrdersPageState = {
     loading: false,
     error: null,
   },
-  orderDetailsModal: {
-    data: null,
-    loading: false,
-    error: null,
-  },
 };
 
 const reducer = createReducer(initialState, {
@@ -32,6 +27,12 @@ const reducer = createReducer(initialState, {
   [actions.getOrders.SUCCESS]: (state, action) => {
     state.ordersPage.data = action.payload;
     state.ordersPage.loading = false;
+  },
+  [actions.getOrdersRefresh.SUCCESS]: (state, action) => {
+    state.ordersPage.data = action.payload;
+  },
+  [actions.getOrdersRefresh.ERROR]: (state, action) => {
+    state.ordersPage.error = action.payload;
   },
 });
 

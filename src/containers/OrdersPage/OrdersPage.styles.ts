@@ -12,3 +12,7 @@ export const OrdersPageTitle = styled('div')`
   padding-top: 56px;
   color: ${baseTheme.colors.primary};
 `;
+
+export const OrdersPageTableContainer = styled('div')`
+  padding: 50px 0;
+`;
