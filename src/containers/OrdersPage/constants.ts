@@ -2,6 +2,10 @@ import { DeliveryType, OrderStatus, PaymentType } from './types';
 
 export const GET_ORDERS = 'GET_ORDERS';
 export const GET_ORDERS_REFRESH = 'GET_ORDERS_REFRESH';
+export const CANCEL_ORDER = 'CANCEL_ORDER';
+export const PUT_COLLECTING_STATUS = 'PUT_COLLECTING_STATUS';
+export const PUT_READY_STATUS = 'PUT_READY_STATUS';
+export const PUT_COMPLETED_STATUS = 'PUT_COMPLETED_STATUS';
 
 export const orderDeliveryTypesStrategy = {
   self: DeliveryType.SELF,

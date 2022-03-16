@@ -23,6 +23,7 @@ export const mapDataForOrdersPageTable = (
   return data
     .map((item) => {
       return {
+        id: item.order.order_number,
         orderNumber: `№${item.order.order_number}`,
         phone: `+${item.order.phone}`,
         createdAt: formatTime(item.order.created_at),

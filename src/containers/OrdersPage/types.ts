@@ -97,6 +97,7 @@ export interface OrderTableProductData {
 }
 
 export interface OrderTableData {
+  id: string;
   phone: string;
   orderNumber: string;
   createdAt: string;

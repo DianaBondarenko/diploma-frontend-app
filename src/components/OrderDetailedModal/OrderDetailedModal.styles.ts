@@ -117,4 +117,22 @@ export const OrderDetailedProductsContainer = styled('div')`
     font-weight: 700;
     margin-bottom: 24px;
   }
+
+  .total-amount__container {
+    margin-top: 17px;
+    display: flex;
+    align-items: center;
+
+    .total-amount__title {
+      margin-right: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      color: ${baseTheme.colors.secondary};
+    }
+
+    .total-amount__value {
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
 `;

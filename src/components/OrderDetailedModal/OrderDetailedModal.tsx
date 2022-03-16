@@ -1,5 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './OrderDetailedModal.styles';
+import * as actions from '../../containers/OrdersPage/actions';
 import ModalWindow from '../ModalWindow';
 import {
   DeliveryType,
@@ -14,10 +16,16 @@ import ProductsTable from './components/ProductsTable';
 interface OrderDetailedModalProps {
   data: OrderTableData;
   onClose: () => void;
+  onOrderCancel: (id: string) => void;
 }
 
-const OrderDetailedModal = ({ data, onClose }: OrderDetailedModalProps) => {
+const OrderDetailedModal = ({
+  data,
+  onClose,
+  onOrderCancel,
+}: OrderDetailedModalProps) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const deliveryTypeTitlesStrategy = {
     [DeliveryType.DELIVERY]: t('OrdersPage.OrderDetailedModal.DELIVERY_TITLE'),
@@ -29,6 +37,26 @@ const OrderDetailedModal = ({ data, onClose }: OrderDetailedModalProps) => {
       'OrdersPage.OrderDetailedModal.IN_PLACE_PAY_TITLE'
     ),
     [PaymentType.KASPI_PAY]: t('OrdersPage.OrderDetailedModal.KASPI_PAY_TITLE'),
+  };
+
+  const handleCollectingStatusClick = () => {
+    onClose();
+    dispatch(actions.putCollectingStatus.request({ id: data.id }));
+  };
+
+  const handleCancelOrderClick = () => {
+    onClose();
+    onOrderCancel(data.id);
+  };
+
+  const handleReadyStatusClick = () => {
+    onClose();
+    dispatch(actions.putReadyStatus.request({ id: data.id }));
+  };
+
+  const handleCompletedStatusClick = () => {
+    onClose();
+    dispatch(actions.putCompletedStatus.request({ id: data.id }));
   };
 
   return (
@@ -45,25 +73,29 @@ const OrderDetailedModal = ({ data, onClose }: OrderDetailedModalProps) => {
             <div className="left-block">
               <ControlButton
                 active={data.status === OrderStatus.COLLECTING}
-                onClick={() => {}}
+                onClick={handleCollectingStatusClick}
                 title={t('OrdersPage.OrderDetailedModal.controls.COLLECTING')}
+                disabled={data.status === OrderStatus.COLLECTING}
               />
               <ControlButton
                 active={data.status !== OrderStatus.COMPLETED}
-                onClick={() => {}}
+                onClick={handleCancelOrderClick}
                 title={t('OrdersPage.OrderDetailedModal.controls.CANCEL')}
+                disabled={data.status === OrderStatus.COMPLETED}
               />
             </div>
             <div className="right-block">
               <ControlButton
                 active={data.status === OrderStatus.READY}
-                onClick={() => {}}
+                onClick={handleReadyStatusClick}
                 title={t('OrdersPage.OrderDetailedModal.controls.READY')}
+                disabled={data.status === OrderStatus.READY}
               />
               <ControlButton
                 active={data.status === OrderStatus.COMPLETED}
-                onClick={() => {}}
+                onClick={handleCompletedStatusClick}
                 title={t('OrdersPage.OrderDetailedModal.controls.COMPLETED')}
+                disabled={data.status === OrderStatus.COMPLETED}
               />
             </div>
           </Styled.OrderDetailedControlsContainer>
@@ -74,6 +106,14 @@ const OrderDetailedModal = ({ data, onClose }: OrderDetailedModalProps) => {
             {t('OrdersPage.OrderDetailedModal.PRODUCTS_TABLE_TITLE')}
           </div>
           <ProductsTable products={data.products} />
+          <div className="total-amount__container">
+            <div className="total-amount__title">
+              {t(
+                'OrdersPage.OrderDetailedModal.ProductsTable.TOTAL_AMOUNT_TITLE'
+              )}
+            </div>
+            <div className="total-amount__value">{data.amount}</div>
+          </div>
         </Styled.OrderDetailedProductsContainer>
 
         <Styled.OrderDetailedDetailsInfo>

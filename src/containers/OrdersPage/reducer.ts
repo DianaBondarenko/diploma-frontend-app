@@ -34,6 +34,42 @@ const reducer = createReducer(initialState, {
   [actions.getOrdersRefresh.ERROR]: (state, action) => {
     state.ordersPage.error = action.payload;
   },
+  [actions.cancelOrder.REQUEST]: (state) => {
+    state.ordersPage.loading = true;
+  },
+  [actions.cancelOrder.SUCCESS]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.cancelOrder.ERROR]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putCompletedStatus.REQUEST]: (state) => {
+    state.ordersPage.loading = true;
+  },
+  [actions.putCompletedStatus.SUCCESS]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putCompletedStatus.ERROR]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putReadyStatus.REQUEST]: (state) => {
+    state.ordersPage.loading = true;
+  },
+  [actions.putReadyStatus.SUCCESS]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putReadyStatus.ERROR]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putCollectingStatus.REQUEST]: (state) => {
+    state.ordersPage.loading = true;
+  },
+  [actions.putCollectingStatus.ERROR]: (state) => {
+    state.ordersPage.loading = false;
+  },
+  [actions.putCollectingStatus.SUCCESS]: (state) => {
+    state.ordersPage.loading = false;
+  },
 });
 
 const ordersPageLoading = (state: AppState) =>

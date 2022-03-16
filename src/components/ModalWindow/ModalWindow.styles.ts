@@ -16,7 +16,7 @@ export const ModalWindowContainer = styled('div')`
 
 export const ModalWindowContent = styled('div')`
   padding: 0 64px 56px 64px;
-  max-height: 60vh;
+  max-height: 90vh;
   overflow: auto;
 `;
 

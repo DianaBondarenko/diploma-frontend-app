@@ -49,6 +49,10 @@ const OrdersTable = ({ data }: OrdersTableProps) => {
     setSelectedOrder(null);
   };
 
+  const handleCancelOrder = (id: string) => {
+    console.log('cancel modal', id); // TODO: add cancel modal
+  };
+
   return (
     <>
       <Styled.OrdersTable>
@@ -67,6 +71,7 @@ const OrdersTable = ({ data }: OrdersTableProps) => {
         <OrderDetailedModal
           onClose={handleCloseOrderDetailedModal}
           data={selectedOrder}
+          onOrderCancel={handleCancelOrder}
         />
       )}
     </>

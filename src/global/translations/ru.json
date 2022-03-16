@@ -67,7 +67,9 @@
             "VENDOR_CODE": "Артикул",
             "QUANTITY": "Количество",
             "TOTAL_AMOUNT": "Цена сервиса"
-          }
+          },
+          "NEEDS_RECIPE": "По рецепту",
+          "TOTAL_AMOUNT_TITLE": "Итого:"
         }
       }
     }

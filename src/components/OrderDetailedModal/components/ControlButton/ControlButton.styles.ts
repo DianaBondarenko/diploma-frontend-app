@@ -17,4 +17,8 @@ export const ControlButtonContainer = styled('div')`
   &.active {
     background-color: ${baseTheme.colors.mainLightBlue};
   }
+
+  &.disabled {
+    cursor: default;
+  }
 `;
