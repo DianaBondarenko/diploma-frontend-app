@@ -1,0 +1,3 @@
+export interface CartPageState {
+  cartPage: {};
+}

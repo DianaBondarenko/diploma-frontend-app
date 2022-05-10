@@ -1,7 +1,7 @@
 import { LoginState } from '../containers/LoginPage/types';
-import { OrdersPageState } from '../containers/OrdersPage/types';
+import { ProductsPageState } from '../containers/ProductsPage/types';
 
 export interface AppState {
   loginReducer: LoginState;
-  ordersPageReducer: OrdersPageState;
+  productsPageReducer: ProductsPageState;
 }

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { loginReducer } from './containers/LoginPage';
-import { ordersPageReducer } from './containers/OrdersPage';
+import { productsPageReducer } from './containers/ProductsPage';
 
 export default combineReducers({
   loginReducer,
-  ordersPageReducer,
+  productsPageReducer,
 });

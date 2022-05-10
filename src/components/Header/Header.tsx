@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import * as Styled from './Header.styles';
 import * as actions from '../../containers/LoginPage/actions';
 import { selectors } from '../../containers/LoginPage/reducer';
-import logo from '../../global/media/header-logo.svg';
+import logo from '../../global/media/logo.svg';
 import searchIcon from '../../global/media/header-search-icon.svg';
 import { setToLocalStorage } from '../../global/helpers';
 

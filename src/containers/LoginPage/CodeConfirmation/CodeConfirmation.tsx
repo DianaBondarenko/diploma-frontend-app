@@ -71,6 +71,7 @@ const CodeConfirmation = ({ phoneNumber }: CodeConfirmationProps) => {
       </Styled.CodeConfirmationHeader>
       <Styled.CodeConfirmation>
         <div className="code-title">{t('CodeConfirmation.CODE')}</div>
+        {/*@ts-ignore*/}
         <ReactCodeInput
           fields={4}
           fieldWidth={40}

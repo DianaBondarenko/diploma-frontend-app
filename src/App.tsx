@@ -6,11 +6,11 @@ import InitComponent from './containers/InitComponent';
 import { getFromLocalStorage, setToLocalStorage } from './global/helpers';
 
 const App = () => {
-  const ru = require('./global/translations/ru.json');
+  const ru = require('./global/translations/ua.json');
 
   useEffect(() => {
     if (!getFromLocalStorage('lang')) {
-      setToLocalStorage('lang', 'ru');
+      setToLocalStorage('lang', 'ua');
     }
   }, []);
 

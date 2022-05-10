@@ -7,23 +7,23 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const InitComponent = () => {
-  const accessToken = useSelector(loginSelectors.accessToken);
-  const refreshToken = useSelector(loginSelectors.refreshToken);
+  // const accessToken = useSelector(loginSelectors.accessToken);
+  // const refreshToken = useSelector(loginSelectors.refreshToken);
 
   const selectStartPage = () => {
-    if (accessToken && refreshToken) {
-      return <MainPage />;
-    }
-    return (
-      <div>
-        <Header />
-        <Switch>
-          <Route exact path="/login" component={LoginPage} />
-          <Redirect to="/login" />
-        </Switch>
-        <Footer />
-      </div>
-    );
+    // if (accessToken && refreshToken) {
+    return <MainPage />;
+    // }
+    // return (
+    //   <div>
+    //     <Header />
+    //     <Switch>
+    //       <Route exact path="/login" component={LoginPage} />
+    //       <Redirect to="/login" />
+    //     </Switch>
+    //     <Footer />
+    //   </div>
+    // );
   };
   return selectStartPage();
 };

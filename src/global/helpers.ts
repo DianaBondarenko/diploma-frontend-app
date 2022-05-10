@@ -120,3 +120,17 @@ export const formatTime = (time: string) => {
     date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 };
+
+export const getProductsCount = (count: number) => {
+  if (count > 20 || count <= 4) {
+    const splitCount = count.toString().split('');
+    const lastDigit = Number(splitCount[splitCount.length - 1]);
+    if (lastDigit === 1) {
+      return `${count} товар`;
+    }
+    if (lastDigit === 2 || lastDigit === 3 || lastDigit === 4) {
+      return `${count} товари`;
+    }
+  }
+  return `${count} товарів`;
+};

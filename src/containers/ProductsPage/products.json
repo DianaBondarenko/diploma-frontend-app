@@ -1,0 +1,212 @@
+[
+  {
+    "id": "1",
+    "name": "Молоко «Галичина» «Українське» 2,5%",
+    "price": 33.49,
+    "category_id": "15",
+    "weight": "870 г",
+    "packing": "пляшка ПЕТ",
+    "manufacturer": "Галичина",
+    "image": ""
+  },
+  {
+    "id": "2",
+    "name": "Молоко «Селянське» ультрапастеризоване 2,5%",
+    "price": 29.69,
+    "category_id": "15",
+    "weight": "900 г",
+    "packing": "упаковка",
+    "manufacturer": "Селянське",
+    "image": ""
+  },
+  {
+    "id": "3",
+    "name": "Молоко «Яготинське» для дітей від 9 міс. 3,2% т/п",
+    "price": 13.99,
+    "category_id": "15",
+    "weight": "200 г",
+    "packing": "тетра-брік",
+    "manufacturer": "Яготинське для дітей",
+    "image": ""
+  },
+  {
+    "id": "4",
+    "name": "Хліб «Кулиничі» «Європейський» тостовий білий",
+    "price": 23.49,
+    "category_id": "1",
+    "weight": "330 г",
+    "packing": "1 упаковка",
+    "manufacturer": "Кулиничі",
+    "image": ""
+  },
+  {
+    "id": "5",
+    "name": "Хліб «Крафтяр» подовий гречаний%",
+    "price": 6.49,
+    "category_id": "1",
+    "weight": "100 г",
+    "packing": "пакет паперовий",
+    "manufacturer": "Крафтяр",
+    "image": ""
+  },
+  {
+    "id": "6",
+    "name": "Хліб «Київхліб» тостовий світлий нарізаний",
+    "price": 27.49,
+    "category_id": "1",
+    "weight": "350 г",
+    "packing": "1 упаковка",
+    "manufacturer": "Київхліб",
+    "image": ""
+  },
+  {
+    "id": "7",
+    "name": "Сушка «Київхліб» «Малютка»",
+    "price": 30.89,
+    "category_id": "1",
+    "weight": "340 г",
+    "packing": "1 упаковка",
+    "manufacturer": "Київхліб",
+    "image": ""
+  },
+  {
+    "id": "8",
+    "name": "Борошно «Хуторок» пшеничне в/ґ",
+    "price": 40.69,
+    "category_id": "3",
+    "weight": "2 кг",
+    "packing": "1 упаковка",
+    "manufacturer": "Хуторок",
+    "image": ""
+  },
+  {
+    "id": "9",
+    "name": "Борошно кукурудзяне «Лавка традицій» тонкого помелу",
+    "price": 29.99,
+    "category_id": "3",
+    "weight": "1 кг",
+    "packing": "1 упаковка",
+    "manufacturer": "Лавка традицій",
+    "image": ""
+  },
+  {
+    "id": "10",
+    "name": "Вироби макаронні La Pasta черепашки",
+    "price": 25.29,
+    "category_id": "3",
+    "weight": "400 г",
+    "packing": "1 упаковка",
+    "manufacturer": "La Pasta",
+    "image": ""
+  },
+  {
+    "id": "11",
+    "name": "Вироби макаронні Pasta Reggia «Спагетті»",
+    "price": 38.59,
+    "category_id": "3",
+    "weight": "500 г",
+    "packing": "пакет поліетилен",
+    "manufacturer": "Pasta Reggia",
+    "image": ""
+  },
+  {
+    "id": "12",
+    "name": "Сік Rich яблучний",
+    "price": 30.89,
+    "category_id": "6",
+    "weight": "1 л",
+    "packing": "тетра-пак",
+    "manufacturer": "Rich",
+    "image": ""
+  },
+  {
+    "id": "13",
+    "name": "Сік «Садочок» персиковий",
+    "price": 24.69,
+    "category_id": "6",
+    "weight": "0.95 л",
+    "packing": "тетра-пак",
+    "manufacturer": "Садочок",
+    "image": ""
+  },
+  {
+    "id": "14",
+    "name": "Напій «Живчик» з соком яблука сильногазований",
+    "price": 17.99,
+    "category_id": "6",
+    "weight": "1 л",
+    "packing": "пляшка ПЕТ",
+    "manufacturer": "Живчик",
+    "image": ""
+  },
+  {
+    "id": "15",
+    "name": "Напій Coca-Cola Zero",
+    "price": 11.79,
+    "category_id": "6",
+    "weight": "0.33 л",
+    "packing": "жестяна банка",
+    "manufacturer": "Coca-Cola",
+    "image": ""
+  },
+  {
+    "id": "16",
+    "name": "Куряче філе «Наша Ряба», лоток",
+    "price": 14.49,
+    "category_id": "2",
+    "weight": "100 г",
+    "packing": "вакуумна упаковка",
+    "manufacturer": "Наша Ряба",
+    "image": ""
+  },
+  {
+    "id": "17",
+    "name": "Соус «Торчин» «Папрік»",
+    "price": 21.99,
+    "category_id": "12",
+    "weight": "200 г",
+    "packing": "дой-пак поліетилен",
+    "manufacturer": "Торчин",
+    "image": ""
+  },
+  {
+    "id": "18",
+    "name": "Сир плавлений «Комо» вершковий 40%",
+    "price": 15.49,
+    "category_id": "11",
+    "weight": "75 г",
+    "packing": "1 упаковка",
+    "manufacturer": "Комо",
+    "image": ""
+  },
+  {
+    "id": "19",
+    "name": "Сир «Ферма» «Сулугуні» 45%",
+    "price": 61.49,
+    "category_id": "15",
+    "weight": "200 г",
+    "packing": "1 упаковка",
+    "manufacturer": "Ферма",
+    "image": ""
+  },
+  {
+    "id": "20",
+    "name": "Вермут Marengo Bianco Classic десертний",
+    "price": 73.99,
+    "category_id": "7",
+    "weight": "0.5 л",
+    "packing": "1 упаковка",
+    "manufacturer": "Marengo",
+    "image": ""
+  },
+  {
+    "id": "21",
+    "name": "Чай зелений Curtis «Тропічне манго» з додаванням рослинної сировини",
+    "price": 33.49,
+    "category_id": "5",
+    "weight": "20*1,8г/уп",
+    "packing": "1 упаковка",
+    "manufacturer": "Curtis",
+    "image": ""
+  }
+]

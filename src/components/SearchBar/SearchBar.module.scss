@@ -1,0 +1,67 @@
+@import '../../global/styles/palette';
+
+.productsSearchWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.productsSearchInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  width: 100%;
+  height: 48px;
+  border: 1px solid $stroking;
+  border-radius: 8px 0 0 8px;
+  position: relative;
+
+  input {
+    width: 100%;
+    color: $secondary;
+    font-size: 16px;
+    -webkit-appearance: none;
+    border: none;
+    padding: 0;
+    background-color: inherit;
+
+    &::placeholder {
+      color: $tertiary;
+    }
+  }
+}
+
+.productsSearchInputActive {
+  border: 1px solid $main-light-blue;
+}
+
+.productsSearchInputWrapper {
+  display: flex;
+  width: 100%;
+
+  input:focus {
+    outline: none;
+  }
+}
+
+.productsSearchBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 0 8px 8px 0;
+  background: $main-light-blue;
+  cursor: pointer;
+  border: none;
+  outline: inherit;
+}
+
+.productSearchClearBtn {
+  border: none;
+  background-color: inherit;
+  font-size: 14px;
+  color: $main-light-blue;
+  font-weight: 500;
+  cursor: pointer;
+}
