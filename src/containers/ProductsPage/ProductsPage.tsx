@@ -23,7 +23,7 @@ const ProductsPage = () => {
   const data = useSelector(selectors.productsPageData);
 
   useEffect(() => {
-    dispatch(actions.getProductsBySearchValue.request());
+    dispatch(actions.getProductsBySearchValue.request(searchValue));
   }, [dispatch]);
 
   const pageContent = (

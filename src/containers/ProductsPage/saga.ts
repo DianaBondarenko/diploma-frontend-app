@@ -4,13 +4,15 @@ import { ProductsService } from './service';
 import { ProductsResponse } from './types';
 import { mapProductsData } from './helpers';
 
-// export function* getProductsSaga({payload}: {payload: {searchValue: string}}) {
-export function* getProductsSaga() {
-  // console.log(payload)
+interface GetProductsSagaParams {
+  type: string;
+  payload: string;
+}
+
+export function* getProductsBySearchValueSaga({payload}: GetProductsSagaParams) {
   try {
     const response: ProductsResponse = yield call(
-      ProductsService.getProductsBySearchValue
-      // ProductsService.getProductsBySearchValue, payload.searchValue
+      ProductsService.getProductsBySearchValue, payload
     );
     const products = mapProductsData(response.data);
 
@@ -22,7 +24,6 @@ export function* getProductsSaga() {
 
 export function* productsPageWatcherSaga() {
   yield all([
-    takeLatest(actions.getProductsBySearchValue.REQUEST, getProductsSaga),
-    // takeLatest(actions.getProductsBySearchValue.request, getProductsSaga),
+    takeLatest(actions.getProductsBySearchValue.REQUEST, getProductsBySearchValueSaga),
   ]);
 }
