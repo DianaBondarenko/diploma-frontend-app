@@ -37,7 +37,7 @@ const HomePage = () => {
 
   return (
     <>
-      Main
+      <br />
       <SearchBar
         value={searchValue}
         onSearch={handleSearch}

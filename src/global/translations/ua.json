@@ -1,5 +1,10 @@
 {
   "translation": {
+    "Header": {
+      "CART": "Кошик",
+      "CATALOG": "Каталог",
+      "LOGOUT_BTN_TEXT": "Вийти"
+    },
     "Footer": {
       "DESCRIPTION": "З 8:00 до 20:00 без вихідних"
     },

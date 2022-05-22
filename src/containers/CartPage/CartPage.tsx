@@ -10,7 +10,7 @@ const CartPage = () => {
   const { t } = useTranslation();
 
   const products = useSelector(selectors.cartPageProducts);
-  const productsCountInCart = products.length;
+  const productsInCartCount = products.length;
 
   return (
     <div className={styles.mainContainer}>
@@ -19,10 +19,10 @@ const CartPage = () => {
           <div className={styles.headerText}>{t('CartPage.TITLE_TEXT')}</div>
           <div className={styles.subheaderText}>
             {t('CartPage.SUBTITLE_TEXT')}{' '}
-            {getProductsCount(productsCountInCart)}
+            {getProductsCount(productsInCartCount)}
           </div>
         </div>
-        {productsCountInCart > 0 ? (
+        {productsInCartCount > 0 ? (
           <div className={styles.cartContainer}>
             {Object.values(products)
               // ?.sort(sortByAlphabet)

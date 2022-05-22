@@ -1,0 +1,175 @@
+@import '../../global/styles/palette';
+
+.mainContainer {
+  width: 100%;
+  background-color: $main-blue;
+  padding: 12px 32px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1216px;
+  margin: auto;
+}
+
+.leftBlock {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 95px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.centralBlock {
+  display: flex;
+  align-items: center;
+}
+
+.searchBar {
+  width: 345px;
+}
+
+.buttonCatalog {
+  font-weight: 500;
+  background: $white;
+  border-radius: 8px;
+  padding: 8px 18px;
+  color: $main-light-blue;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 16px;
+
+  .buttonCatalogText {
+    margin-left: 8px;
+  }
+}
+
+.locationBlock {
+  color: $white;
+  display: flex;
+  align-items: center;
+  margin-left: 32px;
+  padding-top: 2px;
+
+  .icon {
+    svg {
+      path {
+        fill: $white;
+      }
+
+      margin-right: 5px;
+    }
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+
+  .town {
+    color: $main-blue;
+    padding-left: 9px;
+  }
+}
+
+.buttonCart {
+  font-weight: 500;
+  background: $white;
+  border-radius: 8px;
+  padding: 8px 18px;
+  color: $main-light-blue;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.buttonCartWithCount {
+  padding: 6px 18px;
+
+  .cartIcon {
+    margin-right: 10px;
+    margin-left: -5px;
+  }
+}
+
+.rightBlock {
+  display: flex;
+}
+
+.cartIcon {
+  path {
+    fill: $main-light-blue;
+  }
+
+  margin-right: 5px;
+}
+
+.contactBlock {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  background: $white;
+  border-radius: 8px;
+  padding: 9px 11px;
+  cursor: pointer;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      path {
+        fill: $main-light-blue;
+      }
+    }
+  }
+}
+
+.listsBlock {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  background: $white;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.buttonUser {
+  max-width: 40px;
+  margin-left: 16px;
+  margin-right: 0;
+  padding-left: 10px;
+
+  @extend .contactBlock;
+
+  .userCircle {
+    background-color: $disabled;
+    height: 5px;
+    width: 5px;
+    border-radius: 15px;
+    margin: -2px 0 0 -2px;
+  }
+
+  .userCircle.active {
+    background-color: $focus-light;
+  }
+}
+
+.iconUser {
+  display: flex;
+  flex-direction: row-reverse;
+}
