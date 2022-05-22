@@ -1,18 +1,24 @@
-import React from 'react';
-import * as Styled from './Button.styles';
+import { FC } from 'react';
+import styles from './Button.module.scss';
 
+enum ButtonVariant {
+  CONTAINED = 'CONTAINED',
+  OUTLINED = 'OUTLINED',
+}
 interface ButtonProps {
   onClick: () => void;
   text: string;
   disabled?: boolean;
-  variant?: 'contained' | 'outlined';
+  variant?: ButtonVariant;
+  fullWidth?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   onClick,
   text,
-  disabled,
-  variant,
+  disabled = false,
+  variant = ButtonVariant.CONTAINED,
+  fullWidth = false,
   children,
 }) => {
   const handleClick = () => {
@@ -21,39 +27,34 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
-  const buttonContent = (
-    <>
-      {children && <div className="children-content">{children}</div>}
-      {text && <div className="text-link">{text}</div>}
-    </>
-  );
+  const linkStyleStrategy = {
+    [ButtonVariant.CONTAINED]: styles.containedLink,
+    [ButtonVariant.OUTLINED]: styles.outlinedLink,
+  };
 
-  return variant === 'contained' ? (
-    <Styled.ContainedButtonContainer>
-      <Styled.ContainedLink
+  const buttonContainerStyleStrategy = {
+    [ButtonVariant.CONTAINED]: styles.containedButtonContainer,
+    [ButtonVariant.OUTLINED]: styles.outlinedButtonContainer,
+  };
+
+  return (
+    <div
+      className={`${buttonContainerStyleStrategy[variant]} ${
+        fullWidth && styles.fullWidth
+      } ${children && !text && styles.onlyIconButtonContainer}`}
+    >
+      <div
+        className={`${linkStyleStrategy[variant]} ${
+          disabled && styles.disabled
+        }`}
         aria-disabled={disabled}
         onClick={handleClick}
-        className={`${disabled && 'disabled'}`}
       >
-        {buttonContent}
-      </Styled.ContainedLink>
-    </Styled.ContainedButtonContainer>
-  ) : (
-    <Styled.OutlinedButtonContainer>
-      <Styled.OutlinedLink
-        aria-disabled={disabled}
-        onClick={handleClick}
-        className={`${disabled && 'disabled'}`}
-      >
-        {buttonContent}
-      </Styled.OutlinedLink>
-    </Styled.OutlinedButtonContainer>
+        {children && <div className={styles.childrenContent}>{children}</div>}
+        {text && <div className={styles.textLink}>{text}</div>}
+      </div>
+    </div>
   );
-};
-
-Button.defaultProps = {
-  disabled: false,
-  variant: 'contained',
 };
 
 export default Button;

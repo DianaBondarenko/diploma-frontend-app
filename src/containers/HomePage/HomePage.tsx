@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SearchBar from '../../components/SearchBar';
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -36,7 +37,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <div className={styles.mainContainer}>
       <br />
       <SearchBar
         value={searchValue}
@@ -46,7 +47,7 @@ const HomePage = () => {
         isSuggestionListOpen={isSuggestionsListOpen}
         onSearchClear={handleSearchInputClear}
       />
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,117 @@
+@import '../../global/styles/palette';
+
+.containedButtonContainer {
+  :hover {
+    background: $main-blue;
+    border-color: $main-blue;
+  }
+
+  .childrenContent {
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  .childrenContent:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.outlinedButtonContainer {
+  :hover {
+    background: $main-blue;
+    color: $white;
+    border-color: $main-blue;
+
+    .childrenContent {
+      svg {
+        path {
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  .childrenContent {
+    svg {
+      path {
+        fill: $main-light-blue;
+      }
+    }
+  }
+
+  .childrenContent:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .disabled {
+    background: $white;
+    color: $disabled;
+  }
+}
+
+.onlyIconButtonContainer {
+  .containedLink,
+  .outlinedLink {
+    padding: 10px;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.childrenContent {
+  display: flex;
+  align-items: center;
+}
+
+.containedLink {
+  background: $main-light-blue;
+  border-radius: 8px;
+  border: 2px solid $main-light-blue;
+  padding: 10px 24px;
+  color: $white;
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  :hover {
+    background: $main-blue;
+  }
+
+  .textLink {
+    @media only screen and(max-width: 1023px) {
+    }
+  }
+}
+
+.outlinedLink {
+  background: $white;
+  border-radius: 8px;
+  padding: 10px 24px;
+  color: $main-light-blue;
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid $main-light-blue;
+
+  .textLink {
+    @media only screen and(max-width: 1023px) {
+    }
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  background: $disabled;
+  border: 2px solid $disabled;
+}

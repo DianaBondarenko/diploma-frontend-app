@@ -3,3 +3,4 @@ export const CART_KEY = 'cart';
 export const HOME_ROUTE = '/';
 export const PRODUCTS_ROUTE = '/products';
 export const CART_ROUTE = '/cart';
+export const SHOPS_ROUTE = '/shops';

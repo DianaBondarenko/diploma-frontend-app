@@ -5,6 +5,7 @@ import { getProductsCount } from '../../global/helpers';
 import styles from './CartPage.module.scss';
 import ProductCard from '../../components/ProductCard';
 import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
+import DeliveryPayBanner from '../../components/DeliveryPayBanner';
 
 const CartPage = () => {
   const { t } = useTranslation();
@@ -39,9 +40,9 @@ const CartPage = () => {
         ) : (
           <div className={styles.contactBannerContainer}>ADD SMTH</div>
         )}
-        {/* <div className={styles.deliveryPayContainer}> */}
-        {/*  <DeliveryPayBanner disabled={productsCountInCart === 0} /> */}
-        {/* </div> */}
+        <div className={styles.deliveryPayContainer}>
+          <DeliveryPayBanner disabled={!productsInCartCount} />
+        </div>
       </div>
     </div>
   );

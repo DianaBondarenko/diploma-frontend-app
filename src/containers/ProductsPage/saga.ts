@@ -9,10 +9,13 @@ interface GetProductsSagaParams {
   payload: string;
 }
 
-export function* getProductsBySearchValueSaga({payload}: GetProductsSagaParams) {
+export function* getProductsBySearchValueSaga({
+  payload,
+}: GetProductsSagaParams) {
   try {
     const response: ProductsResponse = yield call(
-      ProductsService.getProductsBySearchValue, payload
+      ProductsService.getProductsBySearchValue,
+      payload
     );
     const products = mapProductsData(response.data);
 
@@ -24,6 +27,9 @@ export function* getProductsBySearchValueSaga({payload}: GetProductsSagaParams) 
 
 export function* productsPageWatcherSaga() {
   yield all([
-    takeLatest(actions.getProductsBySearchValue.REQUEST, getProductsBySearchValueSaga),
+    takeLatest(
+      actions.getProductsBySearchValue.REQUEST,
+      getProductsBySearchValueSaga
+    ),
   ]);
 }

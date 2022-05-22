@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import * as Styled from './Header.styles';
 import * as actions from '../../containers/LoginPage/actions';
 import { selectors } from '../../containers/LoginPage/reducer';
 import { selectors as cartSelectors } from '../../containers/CartPage/reducer';
@@ -10,7 +9,7 @@ import logo from '../../global/media/logo.svg';
 import searchIcon from '../../global/media/header-search-icon.svg';
 import { setToLocalStorage } from '../../global/helpers/localStorageHelper';
 import styles from './Header.module.scss';
-import {CART_ROUTE, HOME_ROUTE} from '../../global/constants';
+import { CART_ROUTE, HOME_ROUTE } from '../../global/constants';
 import { ReactComponent as CartIcon } from '../../global/media/cart.svg';
 import { ReactComponent as CatalogIcon } from '../../global/media/catalog.svg';
 import Badge from '../Badge';
@@ -54,12 +53,10 @@ const Header = () => {
   };
 
   const handleHomeClick = () => {
-    history.push(HOME_ROUTE)
+    history.push(HOME_ROUTE);
   };
 
-  const handleCatalogClick = () => {
-
-  };
+  const handleCatalogClick = () => {};
 
   const handleCartClick = () => {
     history.push(CART_ROUTE);
@@ -69,30 +66,41 @@ const Header = () => {
     <div className={styles.mainContainer}>
       <div className={styles.content}>
         <div className={styles.leftBlock}>
-          <img src={logo} alt="header logo"  className={styles.logo} onClick={handleHomeClick} />
+          <img
+            src={logo}
+            alt="header logo"
+            className={styles.logo}
+            onClick={handleHomeClick}
+          />
         </div>
-          <div className={styles.centralBlock}>
-            <div className={styles.buttonCatalog} onClick={handleCatalogClick}>
-              <CatalogIcon />
-              <div className={styles.buttonCatalogText}>{t('Header.CATALOG')}</div>
-            </div>
-            <div className={styles.searchBar}>
-              {/*<SearchBar />*/}
+        <div className={styles.centralBlock}>
+          <div className={styles.buttonCatalog} onClick={handleCatalogClick}>
+            <CatalogIcon />
+            <div className={styles.buttonCatalogText}>
+              {t('Header.CATALOG')}
             </div>
           </div>
+          <div className={styles.searchBar}>{/*<SearchBar />*/}</div>
+        </div>
         <div className={styles.rightBlock}>
           <div
-              className={`${styles.buttonCart} ${
-                  productsInCartCount > 0 && styles.buttonCartWithCount
-              }`}
-              onClick={handleCartClick}
+            className={`${styles.buttonCart} ${
+              productsInCartCount > 0 && styles.buttonCartWithCount
+            }`}
+            onClick={handleCartClick}
           >
             {productsInCartCount > 0 ? (
-                <Badge badgeContent={productsInCartCount} isBadgeAnimationActive={startAnimation}>
-                  <CartIcon onClick={handleCartClick} className={styles.cartIcon} />
-                </Badge>
+              <Badge
+                badgeContent={productsInCartCount}
+                isBadgeAnimationActive={startAnimation}
+              >
+                <CartIcon
+                  onClick={handleCartClick}
+                  className={styles.cartIcon}
+                />
+              </Badge>
             ) : (
-                <CartIcon onClick={handleCartClick} className={styles.cartIcon} />
+              <CartIcon onClick={handleCartClick} className={styles.cartIcon} />
             )}
             {t('Header.CART')}
           </div>
