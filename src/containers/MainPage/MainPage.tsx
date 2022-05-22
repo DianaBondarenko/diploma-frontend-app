@@ -15,18 +15,18 @@ const MainPage = () => {
       <Styled.MainPageContentContainer>
         <Switch>
           <Route exact path="/products" component={ProductsPage} />
-          {/*<Redirect to="/products" />*/}
+          {/* <Redirect to="/products" /> */}
         </Switch>
         <Switch>
           <Route path="/products/:productId" component={ProductPage} />
         </Switch>
         <Switch>
           <Route exact path="/cart" component={CartPage} />
-          {/*<Redirect to="/products" />*/}
+          {/* <Redirect to="/products" /> */}
         </Switch>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          {/*<Redirect to="/" />*/}
+          {/* <Redirect to="/" /> */}
         </Switch>
       </Styled.MainPageContentContainer>
       <Footer />

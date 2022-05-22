@@ -114,7 +114,7 @@ const LoginPage = () => {
                   handlePhoneChange(props, e, 'phone')
                 }
               />
-              {/*@ts-ignore*/}
+              {/* @ts-ignore */}
               <ErrorMessage
                 name="phone"
                 render={(msg: string) => (

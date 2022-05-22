@@ -1,7 +1,7 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as actions from './actions';
 import { LoginService } from './service';
-import { setToLocalStorage } from '../../global/helpers';
+import { setToLocalStorage } from '../../global/helpers/localStorageHelper';
 
 interface LoginSagaParams {
   type: string;

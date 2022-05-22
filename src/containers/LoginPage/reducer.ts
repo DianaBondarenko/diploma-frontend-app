@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getFromLocalStorage } from '../../global/helpers';
+import { getFromLocalStorage } from '../../global/helpers/localStorageHelper';
 import { AppState } from '../../global/types';
 import { LoginState } from './types';
 import * as actions from './actions';

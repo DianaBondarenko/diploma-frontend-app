@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SearchBar from '../../components/SearchBar';
 
@@ -22,7 +21,7 @@ const HomePage = () => {
     return () => clearTimeout(delayDebounceFn);
   }, [searchValue]);
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setIsSuggestionsListOpen(true);
     setSearchValue(event.target.value);
   };

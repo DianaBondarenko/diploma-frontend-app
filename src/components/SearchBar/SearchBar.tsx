@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ClickAwayListener } from '@mui/material';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { PRODUCTS_ROUTE } from '../../global/constants';
 
 interface ProductsSearchProps {
   value: string;
-  onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   suggestionsList: {
     [key: string]: string[];
   } | null;
@@ -79,9 +79,9 @@ const SearchBar = ({
                 {t('SearchBar.SEARCH_CLEAR_BTN')}
               </button>
             ) : null}
-            {/*{isSuggestionListOpen && suggestionsList && (*/}
-            {/*  <SuggestionsList suggestionsList={suggestionsList} searchValue={value} />*/}
-            {/*)}*/}
+            {/* {isSuggestionListOpen && suggestionsList && ( */}
+            {/*  <SuggestionsList suggestionsList={suggestionsList} searchValue={value} /> */}
+            {/* )} */}
           </div>
           <button
             className={styles.productsSearchBtn}

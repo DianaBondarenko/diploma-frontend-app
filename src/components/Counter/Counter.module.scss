@@ -18,12 +18,6 @@
     border-left: 1px solid $stroking;
   }
 
-  .disabledCount {
-    background-color: $disabled;
-    border-right: 1px solid $disabled;
-    border-left: 1px solid $disabled;
-  }
-
   .countIcon {
     cursor: pointer;
     width: 32px;

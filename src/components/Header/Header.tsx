@@ -7,7 +7,7 @@ import * as actions from '../../containers/LoginPage/actions';
 import { selectors } from '../../containers/LoginPage/reducer';
 import logo from '../../global/media/logo.svg';
 import searchIcon from '../../global/media/header-search-icon.svg';
-import { setToLocalStorage } from '../../global/helpers';
+import { setToLocalStorage } from '../../global/helpers/localStorageHelper';
 
 const Header = () => {
   const history = useHistory();

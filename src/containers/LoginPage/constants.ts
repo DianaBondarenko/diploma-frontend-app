@@ -4,6 +4,6 @@ export const LOGOUT = 'LOGOUT';
 export const LOGIN_CLEAR_ERROR = 'LOGIN_CLEAR_ERROR';
 
 export const INITIAL_AUTHORIZATION_MODAL_FORM_STATE = {
-  phone: '+7',
+  phone: '+380',
   agreementAccepted: false,
 };

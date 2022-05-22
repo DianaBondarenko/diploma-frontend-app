@@ -2,28 +2,45 @@ import { createReducer } from '@reduxjs/toolkit';
 import { CartPageState } from './types';
 import * as actions from './actions';
 import { AppState } from '../../global/types';
+import {
+  getCurrentCart,
+  updateCart,
+} from '../../global/helpers/localStorageHelper';
 
 const initialState: CartPageState = {
   cartPage: {
-    data: null,
-    loading: false,
-    error: null,
+    products: getCurrentCart() || [],
   },
 };
 
-const reducer = createReducer(initialState, {});
-//
-// const productsPageLoading = (state: AppState) =>
-//   state.productsPageReducer.productsPage.loading;
-// const productsPageError = (state: AppState) =>
-//   state.productsPageReducer.productsPage.error;
-// const productsPageData = (state: AppState) =>
-//   state.productsPageReducer.productsPage.data;
+const reducer = createReducer(initialState, {
+  [actions.addProduct.type]: (state, action) => {
+    const updatedCartProducts = [...state.cartPage.products, action.payload];
+    state.cartPage.products = updatedCartProducts;
+    updateCart(updatedCartProducts);
+  },
+  [actions.deleteProduct.type]: (state, action) => {
+    const updatedCartProducts = state.cartPage.products.filter(
+      (el) => el.id !== action.payload
+    );
+    state.cartPage.products = updatedCartProducts;
+    updateCart(updatedCartProducts);
+  },
+  [actions.updateProduct.type]: (state, action) => {
+    const { id, productInfo } = action.payload;
+    const updatedCartProducts = state.cartPage.products.map((el) =>
+      el.id === id ? productInfo : el
+    );
+    state.cartPage.products = updatedCartProducts;
+    updateCart(updatedCartProducts);
+  },
+});
+
+const cartPageProducts = (state: AppState) =>
+  state.cartPageReducer.cartPage.products;
 
 const selectors = {
-  // productsPageLoading,
-  // productsPageError,
-  // productsPageData,
+  cartPageProducts,
 };
 
 export { selectors };

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { getFromLocalStorage, setToLocalStorage } from '../../helpers';
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from '../../helpers/localStorageHelper';
 import { LoginService } from '../../../containers/LoginPage/service';
 
 const withAuth = (WrappedComponent: any) => {

@@ -8,6 +8,7 @@ import { getProductsCount } from '../../global/helpers';
 import styles from './ProductsPage.module.scss';
 import Loader from '../../components/Loader';
 import ProductCard from '../../components/ProductCard';
+import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
 
 const ProductsPage = () => {
   const { t } = useTranslation();
@@ -60,7 +61,7 @@ const ProductsPage = () => {
           <div className={styles.cardsContainer}>
             {data.map((product) => (
               <div key={product.id} className={styles.card}>
-                <ProductCard variant="search" {...product} />
+                <ProductCard variant={ProductCardVariant.SEARCH} {...product} />
               </div>
             ))}
           </div>
@@ -70,12 +71,10 @@ const ProductsPage = () => {
   );
 
   return (
-    <>
-      <div className={styles.main}>
-        <div className={styles.breadCrumbs}></div>
-        {loading ? <Loader /> : pageContent}
-      </div>
-    </>
+    <div className={styles.main}>
+      <div className={styles.breadCrumbs} />
+      {loading ? <Loader /> : pageContent}
+    </div>
   );
 };
 

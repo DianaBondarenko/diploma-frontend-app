@@ -1,24 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Skeleton } from '@mui/material';
 import { PARTLY_AVAILABLE_TEXT } from './constants';
+import * as actions from '../../containers/CartPage/actions';
 import { PRODUCTS_ROUTE } from '../../../src/global/constants';
-import defaultProductImage from '../../../src/global/media/default-product-image.png';
+import defaultProductImage from '../../global/media/default-product-image.png';
 import { ReactComponent as CartIcon } from '../../global/media/cart.svg';
-// import {
-//   addToCart,
-//   changeCountInCart,
-//   checkIsAddedToCart,
-//   deleteFromCart,
-//   getCurrentCart,
-//   getProductsCountInCart,
-// } from '@global/helpers/localStorageHelper';
+import closeIcon from '../../global/media/close.svg';
 import Counter from '../Counter';
-// import useAuth from '@global/hooks/useAuth';
 import styles from './ProductCard.module.scss';
+import useCheckIsProductInCart from '../../global/hooks/useCheckIsProductInCart';
+import useProductInCartCount from '../../global/hooks/useProductInCartCount';
+
+enum UpdateCountAction {
+  INCREASE = 'INCREASE',
+  DECREASE = 'DECREASE',
+}
+export enum ProductCardVariant {
+  SEARCH = 'SEARCH',
+  CART = 'CART',
+  MODAL = 'MODAL',
+  ORDER = 'ORDER',
+}
 
 export interface ProductCardProps {
-  id: string | number;
+  id: string;
   name: string;
   img?: string;
   description?: string;
@@ -27,12 +34,10 @@ export interface ProductCardProps {
   weight?: string;
   count?: number;
   countDesired?: number;
-  variant: 'search' | 'cart' | 'modal' | 'order';
+  variant: ProductCardVariant;
   manufacturer?: string;
   servicePrice?: number;
-  approximatePrice?: number;
   fromCart?: boolean;
-  onSaveList?: (save: boolean) => void;
 }
 
 /**
@@ -47,78 +52,57 @@ const ProductCard = ({
   weight,
   variant,
   manufacturer,
-  countDesired: pharmacyCountDesired,
+  countDesired: productCountDesired,
   servicePrice,
   count = 0,
   fromCart,
 }: ProductCardProps) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const isAddedToCart = useCheckIsProductInCart(id);
+  const countDesired = useProductInCartCount(id);
 
-  const isModal = variant === 'modal' || variant == 'order';
-  const isCart = variant === 'cart';
-  const isSearch = variant === 'search';
-  const isOrder = variant === 'order';
+  const isModal =
+    variant === ProductCardVariant.MODAL ||
+    variant === ProductCardVariant.ORDER;
+  const isCart = variant === ProductCardVariant.CART;
+  const isSearch = variant === ProductCardVariant.SEARCH;
+  const isOrder = variant === ProductCardVariant.ORDER;
 
-  const [isAddedToCart, setIsAddedToCart] = useState<boolean>();
-  // const { productsCountInCart } = useCartAppState();
-  const [countDesired, setCountDesired] = useState<number>(0);
-  // const defaultProductImage = '../../global/media/default-product-image.png';
   const [imgSrc, setImgSrc] = useState<string>(img || defaultProductImage);
   const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   const currentCart = getCurrentCart();
-  //   setIsAddedToCart(checkIsAddedToCart(sku));
-  //   if (pharmacyCountDesired) {
-  //     setCountDesired(pharmacyCountDesired);
-  //   } else {
-  //     setCountDesired(currentCart[sku]?.countDesired || 0);
-  //   }
-  // }, []);
-  //
-  // useEffect(() => {
-  //   setIsAddedToCart(checkIsAddedToCart(sku));
-  // }, [productsCountInCart]);
-
-  const setProductsCountInCart = (updatedCart: any) => {
-    // dispatch({ type: 'setProductsCountInCart', count: getProductsCountInCart(updatedCart) });
-  };
-
-  const increaseCountInCart = () => {
-    // const updatedCount = changeCountInCart('plus', sku);
-    // setCountDesired(updatedCount);
-  };
-  const decreaseCountInCart = () => {
-    // const updatedCount = changeCountInCart('minus', sku);
-    // setCountDesired(updatedCount);
-  };
 
   const productInfo = {
     id,
     name,
-    img: imgSrc,
+    image: imgSrc,
+    manufacturer,
     price,
     packing,
-    manufacturer,
-    countDesired: 1,
+    weight,
+    countDesired: productCountDesired ?? 1,
   };
 
   const handleCartClick = () => {
-    // if (checkIsAddedToCart(sku)) {
-    //   deleteFromCart(sku);
-    // } else {
-    //   addToCart(sku, productInfo);
-    // }
-    // setProductsCountInCart(getCurrentCart());
+    if (isAddedToCart) {
+      dispatch(actions.deleteProduct(id));
+    } else {
+      dispatch(actions.addProduct(productInfo));
+    }
   };
 
-  const handleListsClick = () => {
-    // if (!isAuthorized) {
-    //   dispatch({ type: 'openAuthModal' });
-    // }
-    // setShowListsModal(true);
-    // // @ts-ignore
-    // onSaveList(false);
+  const updateCountInCart = (action: UpdateCountAction) => {
+    const getUpdatedCount = () => {
+      if (action === UpdateCountAction.DECREASE) {
+        return productInfo.countDesired > 1 ? productInfo.countDesired - 1 : 1;
+      }
+      return productInfo.countDesired + 1;
+    };
+    const updatedProductInfo = {
+      ...productInfo,
+      countDesired: getUpdatedCount(),
+    };
+    dispatch(actions.updateProduct({ id, productInfo: updatedProductInfo }));
   };
 
   const buttonCartText = isAddedToCart
@@ -158,123 +142,122 @@ const ProductCard = ({
         isModal && styles.mainContainerModal
       } ${isSearch && styles.mainContainerSearch}`}
     >
-      <>
-        <div className={styles.imageBlock}>
-          {!isImgLoaded && (
-            <div className={styles.loadingSkeletonContainer}>
-              <Skeleton
-                variant="rectangular"
-                animation="wave"
-                classes={{ root: styles.loadingSkeleton }}
-              />
-            </div>
-          )}
-          <a
-            href={`${
-              fromCart
-                ? `${PRODUCTS_ROUTE}/${id}?=fromcart`
-                : `${PRODUCTS_ROUTE}/${id}`
-            }`}
-          >
-            <img
-              src={imgSrc || defaultProductImage}
-              className={`${styles.image} ${!isImgLoaded && styles.hidden} ${
-                !imgSrc ||
-                (imgSrc === defaultProductImage && styles.defaultImage)
-              }`}
-              onError={() => setImgSrc(defaultProductImage)}
-              onLoad={() => setIsImgLoaded(true)}
-              alt="product image"
+      <div className={styles.imageBlock}>
+        {!isImgLoaded && (
+          <div className={styles.loadingSkeletonContainer}>
+            <Skeleton
+              variant="rectangular"
+              animation="wave"
+              classes={{ root: styles.loadingSkeleton }}
             />
-          </a>
-        </div>
-        <div className={styles.rightBlockNew}>
-          <div className={styles.upperBlock}>
-            <div className={styles.infoBlock}>
-              <div className={styles.productInfo}>
-                <a
-                  href={`${
-                    fromCart
-                      ? `${PRODUCTS_ROUTE}/${id}?=fromcart`
-                      : `${PRODUCTS_ROUTE}/${id}`
-                  }`}
-                >
-                  <div className={styles.productName}>{name}</div>
-                </a>
-                {!isModal && weight && (
-                  <div className={styles.productDescription}>{weight}</div>
-                )}
-                {manufacturer && (
-                  <div className={styles.manufacturer}>{manufacturer}</div>
-                )}
-                {isModal && bottomBlockModal}
-              </div>
-              {isSearch && hasPrice && (
-                <div className={styles.price}>
-                  від {price.toFixed(2)}{' '}
-                  <span className={styles.currency}>
-                    {t('ProductCard.CURRENCY')}
-                  </span>
-                </div>
-              )}
-              {isCart && (
-                <Counter
-                  value={countDesired}
-                  increaseCount={increaseCountInCart}
-                  decreaseCount={decreaseCountInCart}
-                />
-              )}
-            </div>
           </div>
-        </div>
-        {isCart && (
-          <div className={styles.rightBlock}>
-            <img
-              src="/close-dark.svg"
-              className={styles.closeIcon}
-              onClick={handleCartClick}
-              alt="close icon"
-            />
-            {hasPrice && (
+        )}
+        <a
+          href={`${
+            fromCart
+              ? `${PRODUCTS_ROUTE}/${id}?=fromcart`
+              : `${PRODUCTS_ROUTE}/${id}`
+          }`}
+        >
+          <img
+            src={imgSrc || defaultProductImage}
+            className={`${styles.image} ${!isImgLoaded && styles.hidden} ${
+              !imgSrc || (imgSrc === defaultProductImage && styles.defaultImage)
+            }`}
+            onError={() => setImgSrc(defaultProductImage)}
+            onLoad={() => setIsImgLoaded(true)}
+            alt="product image"
+          />
+        </a>
+      </div>
+      <div className={styles.rightBlockNew}>
+        <div className={styles.upperBlock}>
+          <div className={styles.infoBlock}>
+            <div className={styles.productInfo}>
+              <a
+                href={`${
+                  fromCart
+                    ? `${PRODUCTS_ROUTE}/${id}?=fromcart`
+                    : `${PRODUCTS_ROUTE}/${id}`
+                }`}
+              >
+                <div className={styles.productName}>{name}</div>
+              </a>
+              {!isModal && weight && (
+                <div className={styles.productDescription}>{weight}</div>
+              )}
+              {manufacturer && (
+                <div className={styles.manufacturer}>{manufacturer}</div>
+              )}
+              {isModal && bottomBlockModal}
+            </div>
+            {isSearch && hasPrice && (
               <div className={styles.price}>
-                від {(countDesired * (price || 0))?.toFixed(2)}{' '}
+                від {price.toFixed(2)}{' '}
                 <span className={styles.currency}>
                   {t('ProductCard.CURRENCY')}
                 </span>
               </div>
             )}
+            {isCart && (
+              <Counter
+                value={countDesired}
+                increaseCount={() =>
+                  updateCountInCart(UpdateCountAction.INCREASE)
+                }
+                decreaseCount={() =>
+                  updateCountInCart(UpdateCountAction.DECREASE)
+                }
+              />
+            )}
           </div>
-        )}
-        {isModal && count > 0 && servicePrice && (
-          <div className={styles.rightBlock}>
+        </div>
+      </div>
+      {isCart && (
+        <div className={styles.rightBlock}>
+          <img
+            src={closeIcon}
+            className={styles.closeIcon}
+            onClick={handleCartClick}
+            alt="close icon"
+          />
+          {hasPrice && (
             <div className={styles.price}>
-              {(count * servicePrice)?.toFixed(2)}{' '}
+              від {(countDesired * (price || 0))?.toFixed(2)}{' '}
               <span className={styles.currency}>
                 {t('ProductCard.CURRENCY')}
               </span>
             </div>
-            {isOrder && (
-              <div className={styles.orderPacking}>
-                за {count} {t('ProductCard.UNIT')}
-              </div>
-            )}
+          )}
+        </div>
+      )}
+      {isModal && count > 0 && servicePrice && (
+        <div className={styles.rightBlock}>
+          <div className={styles.price}>
+            {(count * servicePrice)?.toFixed(2)}{' '}
+            <span className={styles.currency}>{t('ProductCard.CURRENCY')}</span>
           </div>
-        )}
-        {isSearch && hasPrice && (
-          <div
-            className={`${styles.cartButton} ${isAddedToCart && styles.active}`}
-            onClick={handleCartClick}
-          >
-            <CartIcon />
-            <div className={styles.cartButtonText}>{buttonCartText}</div>
-          </div>
-        )}
-        {isSearch && price === 0 && (
-          <div className={styles.notAvailable}>
-            {t('ProductCard.UNAVAILABLE_TEXT')}
-          </div>
-        )}
-      </>
+          {isOrder && (
+            <div className={styles.orderPacking}>
+              за {count} {t('ProductCard.UNIT')}
+            </div>
+          )}
+        </div>
+      )}
+      {isSearch && hasPrice && (
+        <div
+          className={`${styles.cartButton} ${isAddedToCart && styles.active}`}
+          onClick={handleCartClick}
+        >
+          <CartIcon />
+          <div className={styles.cartButtonText}>{buttonCartText}</div>
+        </div>
+      )}
+      {isSearch && price === 0 && (
+        <div className={styles.notAvailable}>
+          {t('ProductCard.UNAVAILABLE_TEXT')}
+        </div>
+      )}
     </div>
   ) : (
     <></>

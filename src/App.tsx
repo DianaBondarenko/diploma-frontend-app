@@ -3,7 +3,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import InitComponent from './containers/InitComponent';
-import { getFromLocalStorage, setToLocalStorage } from './global/helpers';
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from './global/helpers/localStorageHelper';
 
 const App = () => {
   const ru = require('./global/translations/ua.json');
