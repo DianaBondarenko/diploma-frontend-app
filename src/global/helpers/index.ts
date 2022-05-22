@@ -63,10 +63,14 @@ export const formatTime = (time: string) => {
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 };
 
+export const getLastDigit = (number: number) => {
+  const splitCount = number.toString().split('');
+  return Number(splitCount[splitCount.length - 1]);
+};
+
 export const getProductsCount = (count: number) => {
   if (count > 20 || count <= 4) {
-    const splitCount = count.toString().split('');
-    const lastDigit = Number(splitCount[splitCount.length - 1]);
+    const lastDigit = getLastDigit(count);
     if (lastDigit === 1) {
       return `${count} товар`;
     }
@@ -75,4 +79,9 @@ export const getProductsCount = (count: number) => {
     }
   }
   return `${count} товарів`;
+};
+
+export const getProposalsCount = (count: number) => {
+  const lastDigit = getLastDigit(count);
+  return `Знайдено в ${lastDigit === 1 ? '1 магазині' : `${count} магазинах`}`;
 };

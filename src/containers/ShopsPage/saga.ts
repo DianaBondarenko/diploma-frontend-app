@@ -1,7 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import * as actions from './actions';
 import { ShopsService } from './service';
-import { ProductsResponse } from './types';
+import { ShopsResponse } from './types';
 import { ProductInCartData } from '../CartPage/types';
 
 interface GetShopsProposalsParams {
@@ -11,7 +11,7 @@ interface GetShopsProposalsParams {
 
 export function* getShopsProposalsSaga({ payload }: GetShopsProposalsParams) {
   try {
-    const response: ProductsResponse = yield call(
+    const response: ShopsResponse = yield call(
       ShopsService.getShopsProposals,
       payload
     );

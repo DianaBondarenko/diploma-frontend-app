@@ -18,6 +18,12 @@
       "SUBTITLE_TEXT": "Додано",
       "FIND_IN_PHARMACIES": "Знайти в магазинах"
     },
+    "ShopsPage": {
+      "LIST": "Список",
+      "MAP": "Карта",
+      "TITLE_TEXT": "Пошук в магазинах",
+      "SUBTITLE_TEXT": "Магазини"
+    },
     "ProductCard": {
       "ACTIVE_BUTTON_TEXT": "Додано",
       "INACTIVE_BUTTON_TEXT": "У кошик",
@@ -42,6 +48,11 @@
         "INFO_P4": "Обираєте бажаний вид отримання заказу протягом 24 годин",
         "INFO_P5": "Оплачуєте зручним способом"
       }
+    },
+    "ShopCard": {
+      "BUTTON_TEXT": "Оформити замовлення",
+      "AVAILABLE_TEXT": "Все в наявності",
+      "CURRENCY": "грн"
     }
   }
 }

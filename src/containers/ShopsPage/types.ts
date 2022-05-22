@@ -1,40 +1,25 @@
-export interface ProposalData {
-  id: string;
-  price: number;
-}
+export type Coordinate = [number, number];
 
-export interface ProductData {
+export interface ShopsData {
   id: string;
-  category_id: string;
   name: string;
-  image: string;
-  manufacturer: string;
-  packing: string;
-  weight: string;
-  proposals: ProposalData[];
+  address: string;
+  schedule: string;
+  owner: string;
+  coordinates: Coordinate;
 }
 
-export interface MappedProductData {
-  id: string;
-  categoryId: string;
-  name: string;
-  image: string;
-  manufacturer: string;
-  packing: string;
-  weight: string;
-  price: number;
-  proposals: ProposalData[];
-}
+export interface MappedShopsData extends ShopsData {}
 
-export interface ProductsResponse {
+export interface ShopsResponse {
   status: string;
-  data: ProductData[];
+  data: ShopsData[];
   results: number;
 }
 
 export interface ShopsPageState {
   shopsPage: {
-    data: null | MappedProductData[];
+    data: null | MappedShopsData[];
     error: null | string;
     loading: boolean;
   };

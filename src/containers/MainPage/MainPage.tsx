@@ -14,6 +14,10 @@ const MainPage = () => {
     <>
       <Header />
 
+        <Switch>
+            <Route exact path="/shops" component={ShopsPage} />
+        </Switch>
+
       <DefaultLayout>
         <Switch>
           <Route exact path="/products" component={ProductsPage} />
@@ -23,9 +27,6 @@ const MainPage = () => {
         </Switch>
         <Switch>
           <Route exact path="/cart" component={CartPage} />
-        </Switch>
-        <Switch>
-          <Route exact path="/shops" component={ShopsPage} />
         </Switch>
         <Switch>
           <Route exact path="/" component={HomePage} />
