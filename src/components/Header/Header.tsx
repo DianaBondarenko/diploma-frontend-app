@@ -6,13 +6,14 @@ import * as actions from '../../containers/LoginPage/actions';
 import { selectors } from '../../containers/LoginPage/reducer';
 import { selectors as cartSelectors } from '../../containers/CartPage/reducer';
 import logo from '../../global/media/logo.svg';
-import searchIcon from '../../global/media/header-search-icon.svg';
+// import searchIcon from '../../global/media/header-search-icon.svg';
 import { setToLocalStorage } from '../../global/helpers/localStorageHelper';
 import styles from './Header.module.scss';
 import { CART_ROUTE, HOME_ROUTE } from '../../global/constants';
 import { ReactComponent as CartIcon } from '../../global/media/cart.svg';
 import { ReactComponent as CatalogIcon } from '../../global/media/catalog.svg';
 import Badge from '../Badge';
+import CatalogModal from '../CatalogModal';
 
 const Header = () => {
   const history = useHistory();
@@ -24,6 +25,7 @@ const Header = () => {
   let timer: NodeJS.Timeout;
 
   const [startAnimation, setStartAnimation] = useState<boolean>();
+  const [isCatalogModalOpen, setIsCatalogModalOpen] = useState<boolean>(false);
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
   useEffect(() => {
@@ -56,7 +58,9 @@ const Header = () => {
     history.push(HOME_ROUTE);
   };
 
-  const handleCatalogClick = () => {};
+  const handleCatalogClick = () => {
+    setIsCatalogModalOpen(true);
+  };
 
   const handleCartClick = () => {
     history.push(CART_ROUTE);
@@ -116,6 +120,9 @@ const Header = () => {
         {/*  </Styled.HeaderControls>*/}
         {/*)}*/}
       </div>
+      {isCatalogModalOpen && (
+        <CatalogModal onModalClose={() => setIsCatalogModalOpen(false)} />
+      )}
     </div>
   );
 };

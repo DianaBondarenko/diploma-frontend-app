@@ -11,6 +11,7 @@
     "ProductsPage": {
       "TITLE_TEXT": "Результати пошуку за запитом:",
       "NOTHING_FOUND": "Нічого не знайдено за запитом:",
+      "NOTHING_FOUND_IN_CATEGORY": "Нічого не найдено в категорії",
       "SUBTITLE_TEXT": "знайдено"
     },
     "CartPage": {
@@ -23,6 +24,12 @@
       "MAP": "Карта",
       "TITLE_TEXT": "Пошук в магазинах",
       "SUBTITLE_TEXT": "Магазини"
+    },
+    "CatalogPage": {
+      "TITLE": "Каталог",
+      "HEADER_TEXT": "Каталог",
+      "SHOW_ALL": "Дивитись всі",
+      "BACK": "Назад"
     },
     "ProductCard": {
       "ACTIVE_BUTTON_TEXT": "Додано",

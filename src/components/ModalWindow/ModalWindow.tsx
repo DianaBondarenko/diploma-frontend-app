@@ -1,31 +1,23 @@
-import React, { useEffect } from 'react';
-import * as Styled from './ModalWindow.styles';
+import { FC } from 'react';
+import styles from './ModalWindow.module.scss';
 import closeIcon from '../../global/media/modal-close-icon.svg';
 
 interface ModalWindowProps {
   onClose: () => void;
 }
 
-const ModalWindow: React.FC<ModalWindowProps> = ({ onClose, children }) => {
-  useEffect(() => {
-    document.body.classList.add('no-scroll');
-
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
-  }, []);
-
+const ModalWindow: FC<ModalWindowProps> = ({ onClose, children }) => {
   return (
     <>
-      <Styled.ModalWindowBackdrop />
-      <Styled.ModalWindowContainer>
-        <Styled.ModalWindowHeader>
-          <Styled.ModalCloseIconContainer onClick={onClose}>
+      <div className={styles.modalBackdrop} />
+      <div className={styles.modalContainer}>
+        <div className={styles.modalHeader}>
+          <div onClick={onClose}>
             <img src={closeIcon} alt="close icon" />
-          </Styled.ModalCloseIconContainer>
-        </Styled.ModalWindowHeader>
-        <Styled.ModalWindowContent>{children}</Styled.ModalWindowContent>
-      </Styled.ModalWindowContainer>
+          </div>
+        </div>
+        <div className={styles.modalContent}>{children}</div>
+      </div>
     </>
   );
 };

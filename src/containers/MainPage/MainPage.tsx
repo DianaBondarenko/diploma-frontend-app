@@ -14,9 +14,9 @@ const MainPage = () => {
     <>
       <Header />
 
-        <Switch>
-            <Route exact path="/shops" component={ShopsPage} />
-        </Switch>
+      <Switch>
+        <Route exact path="/shops" component={ShopsPage} />
+      </Switch>
 
       <DefaultLayout>
         <Switch>
