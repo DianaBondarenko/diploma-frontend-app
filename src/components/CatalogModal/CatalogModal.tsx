@@ -41,11 +41,8 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
 
   useEffect(() => {
     dispatch(actions.getCategories.request());
-  }, [dispatch]);
-
-  useEffect(() => {
     setCurrentCategoriesData(getChildrenCategories(null));
-  }, [data]);
+  }, [dispatch]);
 
   const currentCategoryId = currentCategoriesData[0]?.parentId;
   const isRootCategory = currentCategoryId ? currentCategoryId === null : true;
