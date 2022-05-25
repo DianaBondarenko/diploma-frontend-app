@@ -30,56 +30,56 @@ const ShopsPage = () => {
 
   const pageContent = (
     <div className={styles.pharmaciesContentContainer}>
-        <div className={styles.pharmaciesContent}>
-          <div className={styles.leftBlock}>
-            <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
-            {data && (
-              <>
-                {/* <FilterSortOptions */}
-                {/*    isAscendingOption={isAscendingOption} */}
-                {/*    onSortingDirectionChange={handleSortingDirectionChange} */}
-                {/*    selectedSortOption={selectedSortOption} */}
-                {/*    isPopoverShow={isSortPopoverShow} */}
-                {/*    onSortOptionChange={handleSortOptionChange} */}
-                {/*    onPopoverOpen={handleSortPopoverOpen} */}
-                {/*    onPopoverClose={handleSortPopoverClose} */}
-                {/*    filterByAvailability={filterByAvailability} */}
-                {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange} */}
-                {/* /> */}
-                <div className={styles.pharmaciesCount}>
-                  {getProposalsCount(data.length)}
-                </div>
-                <div className={styles.cards}>
-                  {data.map((item) => (
-                    <div
-                      className={styles.card}
-                      key={item.name}
-                      // onClick={() => handleShopClick(getMapInfo([item])[0])}
-                    >
-                      <ShopCard
-                        {...item}
-                        // onCheckout={handleCheckoutMedicines}
-                        onCheckout={() => {}}
-                        isSelected={false}
-                        // isSelected={isPharmacySelected(getMapInfo([item])[0])}
-                      />
-                      <div className={styles.cardDivider} />
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-          <div className={styles.map}>
-            {/* <Map */}
-            {/*    activePlaceMark={activePharmacy} */}
-            {/*    userLocation={userLocation && [userLocation.lat, userLocation.lng]} */}
-            {/*    zoom={mapZoom} */}
-            {/*    placeMarksInfo={placeMarksInfo} */}
-            {/* /> */}
-          </div>
+      <div className={styles.pharmaciesContent}>
+        <div className={styles.leftBlock}>
+          <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
+          {data && (
+            <>
+              {/* <FilterSortOptions */}
+              {/*    isAscendingOption={isAscendingOption} */}
+              {/*    onSortingDirectionChange={handleSortingDirectionChange} */}
+              {/*    selectedSortOption={selectedSortOption} */}
+              {/*    isPopoverShow={isSortPopoverShow} */}
+              {/*    onSortOptionChange={handleSortOptionChange} */}
+              {/*    onPopoverOpen={handleSortPopoverOpen} */}
+              {/*    onPopoverClose={handleSortPopoverClose} */}
+              {/*    filterByAvailability={filterByAvailability} */}
+              {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange} */}
+              {/* /> */}
+              <div className={styles.pharmaciesCount}>
+                {getProposalsCount(data.length)}
+              </div>
+              <div className={styles.cards}>
+                {data.map((item) => (
+                  <div
+                    className={styles.card}
+                    key={item.name}
+                    // onClick={() => handleShopClick(getMapInfo([item])[0])}
+                  >
+                    <ShopCard
+                      {...item}
+                      // onCheckout={handleCheckoutMedicines}
+                      onCheckout={() => {}}
+                      isSelected={false}
+                      // isSelected={isPharmacySelected(getMapInfo([item])[0])}
+                    />
+                    <div className={styles.cardDivider} />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+        <div className={styles.map}>
+          {/* <Map */}
+          {/*    activePlaceMark={activePharmacy} */}
+          {/*    userLocation={userLocation && [userLocation.lat, userLocation.lng]} */}
+          {/*    zoom={mapZoom} */}
+          {/*    placeMarksInfo={placeMarksInfo} */}
+          {/* /> */}
         </div>
       </div>
+    </div>
   );
 
   return (

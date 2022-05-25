@@ -41,11 +41,14 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
 
   useEffect(() => {
     dispatch(actions.getCategories.request());
-    setCurrentCategoriesData(getChildrenCategories(null));
   }, [dispatch]);
 
+  useEffect(() => {
+    setCurrentCategoriesData(getChildrenCategories(null));
+  }, [data]);
+
   const currentCategoryId = currentCategoriesData[0]?.parentId;
-  const isRootCategory = currentCategoryId === null;
+  const isRootCategory = currentCategoryId ? currentCategoryId === null : true;
 
   const handleCategorySelection = (
     categoryId: string,
@@ -69,11 +72,11 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
   };
 
   const renderCategories = () => {
-    const data = showAll
+    const displayedData = showAll
       ? currentCategoriesData
       : currentCategoriesData?.slice(0, DISPLAYED_CATEGORIES_COUNT);
 
-    return data.sort(sortByAlphabet).map((el) => (
+    return displayedData.sort(sortByAlphabet).map((el) => (
       <div
         className={styles.categoriesItem}
         key={el.id}
