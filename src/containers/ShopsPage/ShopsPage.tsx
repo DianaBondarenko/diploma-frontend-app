@@ -29,24 +29,23 @@ const ShopsPage = () => {
   };
 
   const pageContent = (
-    <>
-      <div className={styles.pharmaciesContentContainer}>
+    <div className={styles.pharmaciesContentContainer}>
         <div className={styles.pharmaciesContent}>
           <div className={styles.leftBlock}>
             <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
             {data && (
               <>
-                {/*<FilterSortOptions*/}
-                {/*    isAscendingOption={isAscendingOption}*/}
-                {/*    onSortingDirectionChange={handleSortingDirectionChange}*/}
-                {/*    selectedSortOption={selectedSortOption}*/}
-                {/*    isPopoverShow={isSortPopoverShow}*/}
-                {/*    onSortOptionChange={handleSortOptionChange}*/}
-                {/*    onPopoverOpen={handleSortPopoverOpen}*/}
-                {/*    onPopoverClose={handleSortPopoverClose}*/}
-                {/*    filterByAvailability={filterByAvailability}*/}
-                {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange}*/}
-                {/*/>*/}
+                {/* <FilterSortOptions */}
+                {/*    isAscendingOption={isAscendingOption} */}
+                {/*    onSortingDirectionChange={handleSortingDirectionChange} */}
+                {/*    selectedSortOption={selectedSortOption} */}
+                {/*    isPopoverShow={isSortPopoverShow} */}
+                {/*    onSortOptionChange={handleSortOptionChange} */}
+                {/*    onPopoverOpen={handleSortPopoverOpen} */}
+                {/*    onPopoverClose={handleSortPopoverClose} */}
+                {/*    filterByAvailability={filterByAvailability} */}
+                {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange} */}
+                {/* /> */}
                 <div className={styles.pharmaciesCount}>
                   {getProposalsCount(data.length)}
                 </div>
@@ -72,16 +71,15 @@ const ShopsPage = () => {
             )}
           </div>
           <div className={styles.map}>
-            {/*<Map*/}
-            {/*    activePlaceMark={activePharmacy}*/}
-            {/*    userLocation={userLocation && [userLocation.lat, userLocation.lng]}*/}
-            {/*    zoom={mapZoom}*/}
-            {/*    placeMarksInfo={placeMarksInfo}*/}
-            {/*/>*/}
+            {/* <Map */}
+            {/*    activePlaceMark={activePharmacy} */}
+            {/*    userLocation={userLocation && [userLocation.lat, userLocation.lng]} */}
+            {/*    zoom={mapZoom} */}
+            {/*    placeMarksInfo={placeMarksInfo} */}
+            {/* /> */}
           </div>
         </div>
       </div>
-    </>
   );
 
   return (

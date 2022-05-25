@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import styles from './ShopCard.module.scss';
 import { ECONOMY_TEXT, UNAVAILABLE_TEXT } from './constants';
 // import { PriceHelper } from '../../global/helpers';
 // import { PharmacyMappedMedicineItemProps } from '@global/types';
-import { useTranslation } from 'react-i18next';
 import shopImage from '../../global/media/shop-default-image.svg';
 
 interface PharmacyCardProps {
@@ -84,17 +84,17 @@ PharmacyCardProps) => {
               {t('ShopCard.CURRENCY')}
             </span>
           </div>
-          {/*{price - servicePrice > 0 && (*/}
-          {/*  <div className={styles.desktopEconomyContainer}>*/}
-          {/*    {ECONOMY_TEXT(PriceHelper.stripZeros(price - servicePrice))}*/}
-          {/*    <span className={styles.superscript}>*</span>*/}
-          {/*  </div>*/}
-          {/*)}*/}
+          {/* {price - servicePrice > 0 && ( */}
+          {/*  <div className={styles.desktopEconomyContainer}> */}
+          {/*    {ECONOMY_TEXT(PriceHelper.stripZeros(price - servicePrice))} */}
+          {/*    <span className={styles.superscript}>*</span> */}
+          {/*  </div> */}
+          {/* )} */}
         </div>
       </div>
 
       <button onClick={() => onCheckout([], id)} className={styles.orderButton}>
-        {/*<button onClick={() => onCheckout(products, id)} className={styles.orderButton}>*/}
+        {/* <button onClick={() => onCheckout(products, id)} className={styles.orderButton}> */}
         {t('ShopCard.BUTTON_TEXT')}
       </button>
     </div>

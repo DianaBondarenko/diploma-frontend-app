@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './DeliveryPayBanner.module.scss';
 import Button from '../../components/Button';
-import { useTranslation } from 'react-i18next';
 import { SHOPS_ROUTE } from '../../global/constants';
 
 interface DeliveryPayBannerProps {

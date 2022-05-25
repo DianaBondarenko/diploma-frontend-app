@@ -84,7 +84,7 @@ const Header = () => {
               {t('Header.CATALOG')}
             </div>
           </div>
-          <div className={styles.searchBar}>{/*<SearchBar />*/}</div>
+          <div className={styles.searchBar}>{/* <SearchBar /> */}</div>
         </div>
         <div className={styles.rightBlock}>
           <div
@@ -109,16 +109,16 @@ const Header = () => {
             {t('Header.CART')}
           </div>
         </div>
-        {/*{isAuthorized && (*/}
-        {/*  <Styled.HeaderControls>*/}
-        {/*    <Styled.HeaderSearchButtonContainer onClick={handleSearch}>*/}
-        {/*      <img src={searchIcon} alt="search icon" />*/}
-        {/*    </Styled.HeaderSearchButtonContainer>*/}
-        {/*    <Styled.HeaderLogoutButtonContainer onClick={handleLogout}>*/}
-        {/*      {t('Header.LOGOUT_BTN_TEXT')}*/}
-        {/*    </Styled.HeaderLogoutButtonContainer>*/}
-        {/*  </Styled.HeaderControls>*/}
-        {/*)}*/}
+        {/* {isAuthorized && ( */}
+        {/*  <Styled.HeaderControls> */}
+        {/*    <Styled.HeaderSearchButtonContainer onClick={handleSearch}> */}
+        {/*      <img src={searchIcon} alt="search icon" /> */}
+        {/*    </Styled.HeaderSearchButtonContainer> */}
+        {/*    <Styled.HeaderLogoutButtonContainer onClick={handleLogout}> */}
+        {/*      {t('Header.LOGOUT_BTN_TEXT')} */}
+        {/*    </Styled.HeaderLogoutButtonContainer> */}
+        {/*  </Styled.HeaderControls> */}
+        {/* )} */}
       </div>
       {isCatalogModalOpen && (
         <CatalogModal onModalClose={() => setIsCatalogModalOpen(false)} />

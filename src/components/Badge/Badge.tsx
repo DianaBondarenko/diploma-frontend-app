@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from './Badge.module.scss';
 import { Badge } from '@mui/material';
+import styles from './Badge.module.scss';
 
 interface BadgeProps {
   badgeContent: number | string;
