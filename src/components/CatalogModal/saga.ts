@@ -1,7 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { CategoriesResponse } from './types';
 import * as actions from './actions';
 import { CategoriesService } from './service';
-import { CategoriesResponse } from './types';
 import { mapCategoriesData } from './helpers';
 
 export function* getCategoriesSaga() {

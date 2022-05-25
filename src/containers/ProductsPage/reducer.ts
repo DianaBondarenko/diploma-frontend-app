@@ -23,6 +23,17 @@ const reducer = createReducer(initialState, {
     state.productsPage.data = action.payload;
     state.productsPage.loading = false;
   },
+  [actions.getProductsByCategoryId.REQUEST]: (state) => {
+    state.productsPage.loading = true;
+  },
+  [actions.getProductsByCategoryId.ERROR]: (state, action) => {
+    state.productsPage.error = action.payload;
+    state.productsPage.loading = false;
+  },
+  [actions.getProductsByCategoryId.SUCCESS]: (state, action) => {
+    state.productsPage.data = action.payload;
+    state.productsPage.loading = false;
+  },
 });
 
 const productsPageLoading = (state: AppState) =>

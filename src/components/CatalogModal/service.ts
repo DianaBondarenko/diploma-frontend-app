@@ -10,4 +10,12 @@ export class CategoriesService {
     });
     return response.data;
   };
+
+  static getCategoryById = async (categoryId: string) => {
+    const response = await axios({
+      method: 'get',
+      url: `${CategoriesService.API_BASE_URL}categories/${categoryId}`,
+    });
+    return response.data;
+  };
 }

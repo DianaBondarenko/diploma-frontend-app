@@ -1,7 +1,9 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import * as actions from './actions';
-import { ProductsService } from './service';
 import { ProductsResponse } from './types';
+import { CategoryByIdResponse } from '../../components/CatalogModal/types';
+import { ProductsService } from './service';
+import { CategoriesService } from '../../components/CatalogModal/service';
 import { mapProductsData } from './helpers';
 
 interface GetProductsSagaParams {
@@ -25,11 +27,31 @@ export function* getProductsBySearchValueSaga({
   }
 }
 
+export function* getProductsByCategoryIdSaga({
+  payload,
+}: GetProductsSagaParams) {
+  try {
+    const response: CategoryByIdResponse = yield call(
+      CategoriesService.getCategoryById,
+      payload
+    );
+    const products = mapProductsData(response.data.products);
+
+    yield put(actions.getProductsByCategoryId.success(products));
+  } catch (error) {
+    yield put(actions.getProductsByCategoryId.error(error));
+  }
+}
+
 export function* productsPageWatcherSaga() {
   yield all([
     takeLatest(
       actions.getProductsBySearchValue.REQUEST,
       getProductsBySearchValueSaga
+    ),
+    takeLatest(
+      actions.getProductsByCategoryId.REQUEST,
+      getProductsByCategoryIdSaga
     ),
   ]);
 }
