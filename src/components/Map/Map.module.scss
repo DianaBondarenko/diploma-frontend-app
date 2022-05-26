@@ -1,0 +1,21 @@
+@import '../../global/styles/palette';
+
+.mainContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.infoWindowContainer {
+  .shopName {
+    font-size: 18px;
+    color: $primary;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .shopAddress {
+    color: $primary;
+    margin-bottom: 4px;
+  }
+  .shopSchedule {
+  }
+}

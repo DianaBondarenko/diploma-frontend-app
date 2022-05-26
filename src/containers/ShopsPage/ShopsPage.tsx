@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -10,30 +10,61 @@ import styles from './ShopsPage.module.scss';
 import Loader from '../../components/Loader';
 import ShopCard from '../../components/ShopCard';
 import { ILayoutProps } from '../../components/DefaultLayout/types';
+import Map from '../../components/Map';
+import { ProductData } from '../ProductsPage/types';
+import { MappedProposalData, MappedShopData, ProposalData } from './types';
+import { Coordinate } from '../../global/types';
+import PreviewOrderModal from '../../components/PreviewOrderModal';
 
 const ShopsPage = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const loading = useSelector(selectors.shopsPageLoading);
-  const data = useSelector(selectors.shopsPageData);
+  const shopsData = useSelector(selectors.shopsPageData);
 
   const products = useSelector(cartSelectors.cartPageProducts);
+
+  const [activeShop, setActiveShop] = useState<MappedShopData | null>(null);
+  const [chosenShop, setChosenShop] = useState<MappedShopData | null>(null);
+  const [userLocation, setUserLocation] = useState<Coordinate | null>(null);
 
   useEffect(() => {
     dispatch(actions.getShopsProposals.request(products));
   }, [dispatch]);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setUserLocation([position.coords.latitude, position.coords.longitude]);
+    });
+  }, []);
+
   const handleShopClick = (item: any) => {
-    // setActiveShop(item);
+    setActiveShop(item);
+  };
+
+  const getTotalPrice = (productData: MappedProposalData[] | null) => {
+    return (
+      productData?.reduce((prev, cur) => prev + cur.price * cur.count, 0) || 0
+    );
+  };
+  const getTotalCount = (
+    productData: MappedProposalData[] | null,
+    count: 'count' | 'countDesired'
+  ) => {
+    return productData?.reduce((prev, cur) => prev + cur[count], 0) || 0;
+  };
+
+  const handleProductsModal = (chosenShop: MappedShopData) => {
+    setChosenShop(chosenShop);
   };
 
   const pageContent = (
-    <div className={styles.pharmaciesContentContainer}>
-      <div className={styles.pharmaciesContent}>
+    <div className={styles.shopsContentContainer}>
+      <div className={styles.shopsContent}>
         <div className={styles.leftBlock}>
           <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
-          {data && (
+          {shopsData && (
             <>
               {/* <FilterSortOptions */}
               {/*    isAscendingOption={isAscendingOption} */}
@@ -46,22 +77,30 @@ const ShopsPage = () => {
               {/*    filterByAvailability={filterByAvailability} */}
               {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange} */}
               {/* /> */}
-              <div className={styles.pharmaciesCount}>
-                {getProposalsCount(data.length)}
+              <div className={styles.shopsCount}>
+                {getProposalsCount(shopsData.length)}
               </div>
               <div className={styles.cards}>
-                {data.map((item) => (
+                {shopsData.map((shop) => (
                   <div
                     className={styles.card}
-                    key={item.name}
-                    // onClick={() => handleShopClick(getMapInfo([item])[0])}
+                    key={shop.name}
+                    onClick={() => handleShopClick(shop)}
                   >
                     <ShopCard
-                      {...item}
-                      // onCheckout={handleCheckoutMedicines}
-                      onCheckout={() => {}}
-                      isSelected={false}
-                      // isSelected={isPharmacySelected(getMapInfo([item])[0])}
+                      {...shop}
+                      price={getTotalPrice(shop.proposal)}
+                      count={getTotalCount(shop.proposal, 'count')}
+                      countDesired={getTotalCount(
+                        shop.proposal,
+                        'countDesired'
+                      )}
+                      onShopChoice={() => {
+                        console.log('choice');
+                        handleProductsModal(shop);
+                      }}
+                      // onCheckout={() => {}}
+                      isSelected={shop.id === activeShop?.id}
                     />
                     <div className={styles.cardDivider} />
                   </div>
@@ -71,33 +110,24 @@ const ShopsPage = () => {
           )}
         </div>
         <div className={styles.map}>
-          {/* <Map */}
-          {/*    activePlaceMark={activePharmacy} */}
-          {/*    userLocation={userLocation && [userLocation.lat, userLocation.lng]} */}
-          {/*    zoom={mapZoom} */}
-          {/*    placeMarksInfo={placeMarksInfo} */}
-          {/* /> */}
+          <Map
+            shopsData={shopsData}
+            userLocation={userLocation}
+            activeShop={activeShop}
+          />
         </div>
       </div>
+      {chosenShop && (
+        <PreviewOrderModal
+          shopId={chosenShop.id}
+          products={chosenShop.proposal}
+          onClose={() => setChosenShop(null)}
+        />
+      )}
     </div>
   );
 
-  return (
-    <div className={styles.main}>
-      <div className={styles.breadCrumbs} />
-      {loading ? <Loader /> : pageContent}
-    </div>
-  );
+  return <div>{loading ? <Loader /> : pageContent}</div>;
 };
-
-const ShopsPageLayout = ({ children }: ILayoutProps) => {
-  return (
-    <div className={styles.pharmaciesContentContainer}>
-      <div className={styles.pharmaciesContent}>{children}</div>
-    </div>
-  );
-};
-
-ShopsPage.Layout = ShopsPageLayout;
 
 export default ShopsPage;

@@ -3,6 +3,7 @@ import * as actions from './actions';
 import { ShopsService } from './service';
 import { ShopsResponse } from './types';
 import { ProductInCartData } from '../CartPage/types';
+import { mapShopsData } from './helpers';
 
 interface GetShopsProposalsParams {
   type: string;
@@ -15,7 +16,7 @@ export function* getShopsProposalsSaga({ payload }: GetShopsProposalsParams) {
       ShopsService.getShopsProposals,
       payload
     );
-    const shops = response.data;
+    const shops = mapShopsData(response.data);
 
     yield put(actions.getShopsProposals.success(shops));
   } catch (error) {

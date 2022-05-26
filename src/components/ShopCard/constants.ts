@@ -1,6 +1,10 @@
 import { getProductsCount } from '../../global/helpers';
 
 export const ECONOMY_TEXT = (value: number | string) =>
-  `Вы экономите ${value}₸`;
-export const UNAVAILABLE_TEXT = (countDesired: number, count: number) =>
-  `Отсутствует ${getProductsCount(countDesired - count)}`;
+  `Ви економите ${value}грн`;
+export const UNAVAILABLE_TEXT = (countDesired: number, count: number) => {
+  const missingCount = countDesired - count;
+  return `${missingCount > 1 ? 'Відсутні' : 'Відсутній'} ${getProductsCount(
+    missingCount
+  )}`;
+};

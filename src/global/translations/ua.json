@@ -36,7 +36,8 @@
       "INACTIVE_BUTTON_TEXT": "У кошик",
       "UNAVAILABLE_TEXT": "Немає в наявності",
       "NEEDS_RECIPE_TEXT": "За рецептом",
-      "CURRENCY": "грн"
+      "CURRENCY": "грн",
+      "UNIT": "шт"
     },
     "SearchBar": {
       "SEARCH_PLACEHOLDER": "Пошук",
@@ -60,6 +61,14 @@
       "BUTTON_TEXT": "Оформити замовлення",
       "AVAILABLE_TEXT": "Все в наявності",
       "CURRENCY": "грн"
+    },
+    "PreviewOrderModal": {
+      "TITLE": "Наявність товарів",
+      "LACK_OF_PRODUCTS": "У цьому магазині деякі товари відсутні. Ви можете замовити тільки ті, що є в наявності",
+      "TOTAL_PRICE_TEXT": "Всього:",
+      "CURRENCY": "грн",
+      "CHECKOUT_BTN_TEXT": "Оформити з товарами в наявності",
+      "BACK_TEXT": "Назад"
     }
   }
 }

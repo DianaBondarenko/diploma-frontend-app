@@ -3,23 +3,8 @@
 .breadCrumbs {
   display: flex;
   cursor: pointer;
-
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/13;
-    margin-top: 24px;
-  }
-
-  @media only screen and (max-width: 1023px) {
-    margin: 16px 16px 0;
-    grid-column: 1/9;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    grid-column: 2/9;
-    display: grid;
-    grid-template-columns: inherit;
-    margin: 16px 24px 0;
-  }
+  grid-column: 1/13;
+  margin-top: 24px;
 }
 
 .leftBlock {
@@ -28,14 +13,6 @@
   max-width: 732px;
   margin-left: auto;
   margin-right: 8px;
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    padding: 0 24px;
-  }
-
-  @media only screen and (max-width: 1023px) {
-    margin-right: 0;
-  }
 }
 
 .title {
@@ -50,11 +27,6 @@
   width: 100%;
   padding-right: 24px;
   cursor: pointer;
-
-  @media only screen and (max-width: 960px) {
-    margin: 0;
-    padding: 0;
-  }
 }
 
 .card:last-child {
@@ -82,14 +54,6 @@
   position: sticky;
   top: 64px;
   height: calc(100vh - 64px);
-
-  @media only screen and (max-width: 1023px) {
-    width: 100vw;
-    height: calc(100vh - 112px);
-    position: absolute;
-    z-index: 10;
-    top: 56px;
-  }
 }
 
 .buttonOpenMap {
@@ -126,31 +90,18 @@
   z-index: 15;
 }
 
-.pharmaciesContentContainer {
+.shopsContentContainer {
   width: 100%;
   min-height: calc(100vh - 224px);
-  padding-top: 64px;
   background-color: $white;
-
-  @media only screen and (max-width: 1023px) {
-    min-height: calc(100vh - 56px);
-    overflow: auto;
-    padding-bottom: 56px;
-    padding-top: 0;
-  }
 }
 
-.pharmaciesContent {
+.shopsContent {
   width: 100%;
   display: flex;
-
-  @media only screen and (max-width: 1023px) {
-    flex-direction: column;
-    overflow: auto;
-  }
 }
 
-.pharmaciesCount {
+.shopsCount {
   color: $secondary;
   font-size: 16px;
   padding-top: 16px;
@@ -158,7 +109,7 @@
   margin: 16px 0;
 }
 
-.pharmaciesHeaderWrapper {
+.shopsHeaderWrapper {
   position: fixed;
   width: 100vw;
   z-index: 100;

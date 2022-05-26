@@ -1,25 +1,57 @@
-export type Coordinate = [number, number];
+import { Coordinate } from '../../global/types';
 
-export interface ShopsData {
+export interface ProposalData {
+  count: number;
+  count_desired: number;
+  id: string;
+  image: string;
+  manufacturer: string;
+  name: string;
+  packing: string;
+  price: number;
+  weight: string;
+}
+
+export interface MappedProposalData {
+  count: number;
+  countDesired: number;
+  id: string;
+  image: string;
+  manufacturer: string;
+  name: string;
+  packing: string;
+  price: number;
+  weight: string;
+}
+
+export interface ShopData {
   id: string;
   name: string;
   address: string;
   schedule: string;
   owner: string;
   coordinates: Coordinate;
+  proposal: ProposalData[] | null;
 }
 
-export interface MappedShopsData extends ShopsData {}
+export interface MappedShopData {
+  id: string;
+  name: string;
+  address: string;
+  schedule: string;
+  owner: string;
+  coordinates: Coordinate;
+  proposal: MappedProposalData[] | null;
+}
 
 export interface ShopsResponse {
   status: string;
-  data: ShopsData[];
-  results: number;
+  data: ShopData[];
 }
 
 export interface ShopsPageState {
   shopsPage: {
-    data: null | MappedShopsData[];
+    data: null | MappedShopData[];
     error: null | string;
     loading: boolean;
   };

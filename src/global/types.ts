@@ -11,3 +11,5 @@ export interface AppState {
   shopsPageReducer: ShopsPageState;
   categoriesPageReducer: CategoriesPageState;
 }
+
+export type Coordinate = [number, number];

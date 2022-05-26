@@ -1,31 +1,25 @@
 @import '../../global/styles/palette';
 
-.pharmacyMobileContainer {
-  display: flex;
-  flex-direction: column;
+.shopContainer {
   padding: 24px;
 }
 
-.pharmacyDesktopContainer {
-  padding: 24px;
-}
-
-.pharmacyDesktopHeader {
+.shopHeader {
   display: flex;
   justify-content: space-between;
 }
 
-.desktopHeaderInfoBlock {
+.headerInfoBlock {
   display: flex;
   flex-direction: column;
 }
 
-.desktopHeaderMainInfoBlock {
+.headerMainInfoBlock {
   display: flex;
   align-items: center;
 }
 
-.desktopPharmacyName {
+.shopName {
   margin-left: 12px;
   font-size: 20px;
   color: $primary;
@@ -37,20 +31,20 @@
   }
 }
 
-.desktopPharmacyLocationWrapper {
+.shopLocationWrapper {
   display: flex;
   margin-left: 29px;
   align-items: center;
   cursor: pointer;
 }
 
-.desktopPharmacyLocationText {
+.shopLocationText {
   margin-left: 9px;
   font-size: 16px;
   color: $main-light-blue;
 }
 
-.desktopPriceContainer {
+.priceContainer {
   display: flex;
   font-size: 24px;
   font-weight: 700;
@@ -58,7 +52,7 @@
   justify-content: flex-end;
 }
 
-.desktopPriceCurrency {
+.priceCurrency {
   margin-left: 5px;
 }
 
@@ -66,7 +60,7 @@
   vertical-align: super;
 }
 
-.desktopEconomyContainer {
+.economyContainer {
   font-size: 16px;
   font-weight: 500;
   color: $focus;
@@ -74,16 +68,16 @@
   margin-left: 16px;
 }
 
-.desktopAdditionalInfoContainer {
+.additionalInfoContainer {
   margin-top: 16px;
 }
 
-.desktopPharmacyAddress {
+.shopAddress {
   font-size: 16px;
   color: $primary;
 }
 
-.desktopPharmacyDescription {
+.shopDescription {
   margin-top: 8px;
   font-size: 14px;
   color: $secondary;
@@ -105,102 +99,7 @@
 
 .orderButton {
   margin-top: 24px;
-  border-radius: 8px;
-  background-color: $main-light-blue;
-  border: 1px solid $main-light-blue;
-  padding: 9px 30px;
-  color: $white;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 18px;
-
-  @media only screen and (max-width: 1024px) {
-    margin-top: 16px;
-    width: 198px;
-    padding: 9px;
-  }
-}
-
-.pharmacyMobileHeader {
-  display: flex;
-}
-
-.pharmacyMobileInfoName {
-  font-size: 20px;
-  color: $primary;
-  font-weight: 700;
-}
-
-.pharmacyMobileHeaderInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 8px;
-}
-
-.pharmacyMobileLocationWrapper {
-  display: flex;
-  cursor: pointer;
-}
-
-.pharmacyMobileLocationText {
-  font-size: 16px;
-  font-weight: 400;
-  color: $main-light-blue;
-  margin-left: 8px;
-}
-
-.pharmacyMobileAdditionalInfoContainer {
-  margin-top: 16px;
-}
-
-.pharmacyMobileAddress {
-  font-size: 16px;
-  font-weight: 400;
-  color: $primary;
-  max-width: 295px;
-}
-
-.pharmacyMobileDescription {
-  margin-top: 8px;
-  font-size: 14px;
-  color: $secondary;
-}
-
-.availabilityMobileBlock {
-  margin-top: 16px;
-}
-
-.mobilePriceBlock {
-  display: flex;
-  margin-top: 24px;
-  align-items: center;
-
-  @media only screen and (max-width: 400px) {
-    flex-direction: column;
-    align-items: flex-start;
-
-    .mobilePharmacyEconomy {
-      margin-left: 0;
-    }
-  }
-}
-
-.mobilePharmacyPrice {
-  font-size: 24px;
-  font-weight: 700;
-  color: $primary;
-}
-
-.mobilePriceCurrency {
-  margin-left: 5px;
-}
-
-.mobilePharmacyEconomy {
-  margin-left: 12px;
-  font-size: 18px;
-  font-weight: 500;
-  color: $focus;
+  width: fit-content;
 }
 
 .selectedCard {
