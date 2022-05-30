@@ -19,3 +19,16 @@
   .shopSchedule {
   }
 }
+
+.placeMark {
+  color: $white !important;
+  width: max-content;
+  padding: 5px 12px;
+  border-radius: 7px;
+  margin-left: -15px;
+  margin-top: -15px;
+  background-color: $focus;
+}
+.placeMarkMissing {
+  background-color: $error;
+}

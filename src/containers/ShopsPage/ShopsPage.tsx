@@ -48,6 +48,7 @@ const ShopsPage = () => {
       productData?.reduce((prev, cur) => prev + cur.price * cur.count, 0) || 0
     );
   };
+
   const getTotalCount = (
     productData: MappedProposalData[] | null,
     count: 'count' | 'countDesired'
@@ -58,6 +59,14 @@ const ShopsPage = () => {
   const handleProductsModal = (chosenShop: MappedShopData) => {
     setChosenShop(chosenShop);
   };
+
+  const shopsPlaceMarkInfo = shopsData
+    ? shopsData.map((shop) => ({
+        ...shop,
+        totalCount: getTotalCount(shop.proposal, 'count'),
+        totalCountDesired: getTotalCount(shop.proposal, 'countDesired'),
+      }))
+    : null;
 
   const pageContent = (
     <div className={styles.shopsContentContainer}>
@@ -111,7 +120,7 @@ const ShopsPage = () => {
         </div>
         <div className={styles.map}>
           <Map
-            shopsData={shopsData}
+            shopsData={shopsPlaceMarkInfo}
             userLocation={userLocation}
             activeShop={activeShop}
           />
