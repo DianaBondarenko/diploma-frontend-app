@@ -9,6 +9,9 @@ import styles from './PreviewOrderModal.module.scss';
 import Button from '../Button';
 import ProductCard from '../ProductCard';
 import { ProductCardVariant } from '../ProductCard/ProductCard';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../containers/OrderPage/actions';
+import {orderPageInitialState} from '../../containers/OrderPage/reducer';
 
 // import { PriceHelper } from '@global/helpers';
 
@@ -25,9 +28,13 @@ const PreviewOrderModal: FC<CheckoutModalProps> = ({
 }) => {
   const history = useHistory();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleButtonClick = () => {
-    history.push(ORDER_ROUTE);
+    if (products) {
+      dispatch(actions.setOrderData({ ...orderPageInitialState.orderPage.order, shopId, products, phoneNumber: '' }));
+      history.push(ORDER_ROUTE);
+    }
   };
 
   const lackOfProductsRef = useRef<HTMLDivElement>(null);

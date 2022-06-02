@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import {isValidPhoneNumber} from 'react-phone-number-input';
 import {
   ErrorMessage,
   Field,
@@ -12,7 +13,6 @@ import {
 import * as Styled from './LoginPage.styles';
 import * as actions from './actions';
 import { selectors } from './reducer';
-import { formatPhoneNumberToBeValid } from '../../global/helpers';
 import CustomCheckbox from '../../components/CustomCheckbox';
 import CodeConfirmation from './CodeConfirmation';
 import { INITIAL_AUTHORIZATION_MODAL_FORM_STATE } from './constants';
@@ -41,7 +41,7 @@ const LoginPage = () => {
   ) => {
     // @ts-ignore
     const phoneInputValue = event.target.value.replaceAll(/[\s-()]/g, '');
-    if (!phoneInputValue.match(/^\+7\d{0,10}$/)) {
+    if (!phoneInputValue.match(/^\+380\d{0,9}$/)) {
       return;
     }
     props.setErrors({
@@ -73,7 +73,7 @@ const LoginPage = () => {
     if (!phone) {
       errors.phone = t('LoginPage.PHONE_EMPTY_ERROR');
     }
-    if (!formatPhoneNumberToBeValid(values.phone)) {
+    if (!isValidPhoneNumber(values.phone)) {
       errors.phone = t('LoginPage.PHONE_INVALID_ERROR');
     }
     if (!values.agreementAccepted) {

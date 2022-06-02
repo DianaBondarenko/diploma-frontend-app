@@ -7,6 +7,7 @@ import ProductsPage from '../ProductsPage';
 import ProductPage from '../ProductPage';
 import CartPage from '../CartPage';
 import ShopsPage from '../ShopsPage';
+import OrderPage from '../OrderPage';
 import DefaultLayout from '../../components/DefaultLayout';
 
 const MainPage = () => {
@@ -27,6 +28,9 @@ const MainPage = () => {
         </Switch>
         <Switch>
           <Route exact path="/cart" component={CartPage} />
+        </Switch>
+        <Switch>
+          <Route exact path="/order" component={OrderPage} />
         </Switch>
         <Switch>
           <Route exact path="/" component={HomePage} />

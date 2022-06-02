@@ -1,5 +1,6 @@
-import { CART_KEY, LOCAL_STORAGE_KEY } from '../constants';
+import { CART_KEY, LOCAL_STORAGE_KEY, ORDER_KEY } from '../constants';
 import { Cart } from '../../containers/CartPage/types';
+import { OrderData } from '../../containers/OrderPage/types';
 
 /**
  * The function checks if localStorage is available.
@@ -76,4 +77,14 @@ export const getCurrentCart = () => {
  */
 export const updateCart = (updatedCart: Cart) => {
   setToLocalStorage(CART_KEY, updatedCart);
+};
+
+export const getCurrentOrder = () => {
+  if (isLocalStorageAvailable()) {
+    return getFromLocalStorage(ORDER_KEY) || [];
+  }
+};
+
+export const updateOrder = (updatedOrder: OrderData) => {
+  setToLocalStorage(ORDER_KEY, updatedOrder);
 };

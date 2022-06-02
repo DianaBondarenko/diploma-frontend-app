@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { formatPhoneNumberForRequest } from '../../global/helpers';
 
 export class LoginService {
   static API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1/`;
@@ -9,7 +8,7 @@ export class LoginService {
       method: 'post',
       url: `${LoginService.API_BASE_URL}users/auth`,
       data: JSON.stringify({
-        phone: formatPhoneNumberForRequest(phoneNumber),
+        phone: phoneNumber,
         validation_code: validationCode,
       }),
     });
@@ -32,7 +31,7 @@ export class LoginService {
       method: 'post',
       url: `${LoginService.API_BASE_URL}users/sms`,
       data: JSON.stringify({
-        phone: formatPhoneNumberForRequest(phoneNumber),
+        phone: phoneNumber,
         sms_type: 'auth',
       }),
     });

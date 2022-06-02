@@ -1,0 +1,68 @@
+@import '../../../../global/styles/palette';
+
+.summaryBlock {
+  border-top: 1px solid $stroking;
+  color: $secondary;
+  padding: 16px 0 0;
+  justify-content: space-between;
+
+  .summaryRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    border-top: none;
+    display: flex;
+  }
+}
+
+.highlighted {
+  color: $primary;
+  font-weight: 500;
+}
+
+.totalPrice {
+  font-size: 18px;
+
+  .highlighted {
+    font-weight: bold;
+  }
+}
+
+.economyBlock {
+  margin-top: 4px;
+  font-weight: 500;
+  color: $focus;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (min-width: 1024px) {
+    margin-left: auto;
+  }
+}
+
+.superscript {
+  vertical-align: super;
+}
+
+.summaryLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.costBlock {
+  @media only screen and (min-width: 1024px) {
+    margin-bottom: 14px;
+  }
+}

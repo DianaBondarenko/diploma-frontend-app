@@ -3,6 +3,7 @@ import { loginReducer } from './containers/LoginPage';
 import { productsPageReducer } from './containers/ProductsPage';
 import { cartPageReducer } from './containers/CartPage';
 import { shopsPageReducer } from './containers/ShopsPage';
+import { orderPageReducer } from './containers/OrderPage';
 import { categoriesPageReducer } from './components/CatalogModal';
 
 export default combineReducers({
@@ -11,4 +12,5 @@ export default combineReducers({
   cartPageReducer,
   shopsPageReducer,
   categoriesPageReducer,
+  orderPageReducer,
 });
