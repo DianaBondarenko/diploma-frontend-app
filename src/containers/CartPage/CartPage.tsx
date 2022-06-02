@@ -6,6 +6,7 @@ import styles from './CartPage.module.scss';
 import ProductCard from '../../components/ProductCard';
 import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
 import DeliveryPayBanner from '../../components/DeliveryPayBanner';
+import CartBreadCrumbs from '../../components/Breadcrumbs/CartBreadCrumbs';
 
 const CartPage = () => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ const CartPage = () => {
 
   return (
     <div className={styles.mainContainer}>
+      <CartBreadCrumbs />
       <div className={styles.contentContainer}>
         <div className={styles.header}>
           <div className={styles.headerText}>{t('CartPage.TITLE_TEXT')}</div>

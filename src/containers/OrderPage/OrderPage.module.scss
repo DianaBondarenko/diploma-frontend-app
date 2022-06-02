@@ -9,14 +9,11 @@
 }
 
 .breadCrumbs {
-  display: flex;
-  cursor: pointer;
   grid-column: 1/13;
-  padding: 24px 0 0;
 }
 
 .header {
-  margin: 32px 0;
+  margin-bottom: 32px;
   grid-column: 1/7;
 }
 

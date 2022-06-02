@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { selectors } from './reducer';
+import { DeliveryType } from '../../global/types';
+import { Status } from './types';
 import { getProductsCount } from '../../global/helpers';
-import styles from './OrderPage.module.scss';
+import { selectors } from './reducer';
+import { OrderService } from './service';
+import * as actions from './actions';
 import ProductCard from '../../components/ProductCard';
 import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
 import OrderForm from '../../components/OrderForm';
-import { DeliveryType } from '../../global/types';
-import { OrderService } from './service';
-import { Status } from './types';
-import * as actions from './actions';
 import Summary from '../../components/OrderForm/components/SummaryBlock';
+import OrderBreadCrumbs from '../../components/Breadcrumbs/OrderBreadCrumbs';
+import styles from './OrderPage.module.scss';
 
 const OrderPage = () => {
   const { t } = useTranslation();
@@ -54,6 +55,9 @@ const OrderPage = () => {
 
   return (
     <>
+      <div className={styles.breadCrumbs}>
+        <OrderBreadCrumbs />
+      </div>
       <div className={styles.leftBlock}>
         <div className={styles.header}>
           <div className={styles.headerText}>{t('OrderPage.TITLE_TEXT')}</div>

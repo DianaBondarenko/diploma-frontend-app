@@ -6,13 +6,6 @@
   grid-template-columns: inherit;
 }
 
-.breadCrumbs {
-  display: flex;
-  padding-top: 24px;
-  cursor: pointer;
-  grid-column: 1/13;
-}
-
 .contentContainer {
   grid-column: 1/13;
   display: grid;
@@ -20,7 +13,7 @@
 }
 
 .header {
-  margin: 16px 0;
+  margin-bottom: 16px;
   grid-column: 1/13;
 }
 

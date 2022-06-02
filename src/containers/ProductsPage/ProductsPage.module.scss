@@ -1,13 +1,6 @@
 @import '../../global/styles/palette';
 
 .main {
-  padding-top: 24px;
-  grid-column: 1/13;
-}
-
-.breadCrumbs {
-  display: flex;
-  cursor: pointer;
   grid-column: 1/13;
 }
 
@@ -18,7 +11,7 @@
 }
 
 .header {
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .headerText {

@@ -15,6 +15,7 @@ import { ProductData } from '../ProductsPage/types';
 import { MappedProposalData, MappedShopData, ProposalData } from './types';
 import { Coordinate } from '../../global/types';
 import PreviewOrderModal from '../../components/PreviewOrderModal';
+import ShopsBreadCrumbs from '../../components/Breadcrumbs/ShopsBreadCrumbs';
 
 const ShopsPage = () => {
   const { t } = useTranslation();
@@ -72,6 +73,7 @@ const ShopsPage = () => {
     <div className={styles.shopsContentContainer}>
       <div className={styles.shopsContent}>
         <div className={styles.leftBlock}>
+          <ShopsBreadCrumbs />
           <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
           {shopsData && (
             <>

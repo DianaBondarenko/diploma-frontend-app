@@ -1,12 +1,5 @@
 @import '../../global/styles/palette';
 
-.breadCrumbs {
-  display: flex;
-  cursor: pointer;
-  grid-column: 1/13;
-  margin-top: 24px;
-}
-
 .leftBlock {
   width: 100%;
   padding: 0 16px;
@@ -19,7 +12,7 @@
   color: $primary;
   font-weight: bold;
   font-size: 24px;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .cards {

@@ -9,6 +9,7 @@ import styles from './ProductsPage.module.scss';
 import Loader from '../../components/Loader';
 import ProductCard from '../../components/ProductCard';
 import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
+import ProductsBreadCrumbs from '../../components/Breadcrumbs/ProductsBreadCrumbs';
 
 const ProductsPage = () => {
   const { t } = useTranslation();
@@ -76,7 +77,7 @@ const ProductsPage = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.breadCrumbs} />
+      <ProductsBreadCrumbs categoryName={categoryName} />
       {loading ? <Loader /> : pageContent}
     </div>
   );
