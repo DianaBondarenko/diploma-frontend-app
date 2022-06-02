@@ -42,7 +42,7 @@ import CustomCheckbox from '../CustomCheckbox';
 // import AddressesService from '@global/services/AddressesService';
 // import AddressesSearch from '@/components/OrderForm/components/AddressesSearch';
 import placeMarkIcon from '../../global/media/placemark.svg';
-import {isValidPhoneNumber} from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 
 export interface FormValues {
   phone: string;
@@ -125,7 +125,7 @@ const OrderForm = ({
       props.setErrors({ ...props.errors, address: '', apartmentsNumber: '' });
       // setIsAddAddressShowed(true);
     }
-    if(onDeliveryTypeChange){
+    if (onDeliveryTypeChange) {
       onDeliveryTypeChange(deliveryType);
     }
   };

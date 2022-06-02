@@ -84,11 +84,6 @@
   :hover {
     background: $main-blue;
   }
-
-  .textLink {
-    @media only screen and(max-width: 1023px) {
-    }
-  }
 }
 
 .outlinedLink {
@@ -103,11 +98,6 @@
   align-items: center;
   cursor: pointer;
   border: 2px solid $main-light-blue;
-
-  .textLink {
-    @media only screen and(max-width: 1023px) {
-    }
-  }
 }
 
 .disabled {

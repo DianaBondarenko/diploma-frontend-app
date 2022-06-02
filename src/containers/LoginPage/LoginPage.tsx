@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import {isValidPhoneNumber} from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 import {
   ErrorMessage,
   Field,

@@ -4,41 +4,14 @@
   width: 100%;
   min-height: calc(100vh - 224px);
   background-color: $white;
-
-  @media only screen and (max-width: 1023px) {
-    min-height: calc(100vh - 100px);
-    overflow: auto;
-    padding-bottom: 56px;
-  }
-
-  @media only screen and (max-width: 767px) {
-    overflow: auto;
-    padding: 0 16px 56px;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    overflow: auto;
-    padding: 0 24px 56px;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    padding: 0 32px;
-  }
+  padding: 0 32px;
 }
 
 .mainContent {
   width: 100%;
   display: grid;
 
-  @media only screen and (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    grid-template-columns: repeat(8, 1fr);
-  }
-
-  @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  @media only screen and (max-width: 1280px) {
     grid-template-columns: repeat(12, 1fr);
   }
 

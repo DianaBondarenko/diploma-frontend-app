@@ -14,10 +14,8 @@
     margin-bottom: 12px;
   }
 
-  @media only screen and (min-width: 1024px) {
-    border-top: none;
-    display: flex;
-  }
+  border-top: none;
+  display: flex;
 }
 
 .highlighted {
@@ -39,10 +37,7 @@
   color: $focus;
   display: flex;
   align-items: center;
-
-  @media only screen and (min-width: 1024px) {
-    margin-left: auto;
-  }
+  margin-left: auto;
 }
 
 .superscript {
@@ -62,7 +57,5 @@
 }
 
 .costBlock {
-  @media only screen and (min-width: 1024px) {
-    margin-bottom: 14px;
-  }
+  margin-bottom: 14px;
 }

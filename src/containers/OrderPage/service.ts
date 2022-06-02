@@ -17,8 +17,7 @@ export class OrderService {
       })),
       payment_method:
         paymentMethod === PaymentMethod.ON_DELIVERY ? 'in_place' : '?',
-      delivery_method:
-        deliveryType === DeliveryType.PICK_UP ? 'in_place' : '?',
+      delivery_method: deliveryType === DeliveryType.PICK_UP ? 'in_place' : '?',
     };
 
     const response = await axios({

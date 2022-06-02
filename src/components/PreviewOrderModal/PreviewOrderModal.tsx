@@ -11,7 +11,7 @@ import ProductCard from '../ProductCard';
 import { ProductCardVariant } from '../ProductCard/ProductCard';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../containers/OrderPage/actions';
-import {orderPageInitialState} from '../../containers/OrderPage/reducer';
+import { orderPageInitialState } from '../../containers/OrderPage/reducer';
 
 // import { PriceHelper } from '@global/helpers';
 
@@ -32,7 +32,14 @@ const PreviewOrderModal: FC<CheckoutModalProps> = ({
 
   const handleButtonClick = () => {
     if (products) {
-      dispatch(actions.setOrderData({ ...orderPageInitialState.orderPage.order, shopId, products, phoneNumber: '' }));
+      dispatch(
+        actions.setOrderData({
+          ...orderPageInitialState.orderPage.order,
+          shopId,
+          products,
+          phoneNumber: '',
+        })
+      );
       history.push(ORDER_ROUTE);
     }
   };

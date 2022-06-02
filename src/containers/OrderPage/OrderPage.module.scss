@@ -6,15 +6,6 @@
   flex-direction: column;
   background-color: $white;
   padding: 0 16px 16px;
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    padding: 0 24px 24px;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-  }
 }
 
 .breadCrumbs {
@@ -27,18 +18,6 @@
 .header {
   margin: 32px 0;
   grid-column: 1/7;
-
-  @media only screen and (max-width: 1023px) {
-    margin: 0 0 16px;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    grid-column: 2/8;
-  }
-
-  @media only screen and (max-width: 767px) {
-    grid-column: 1/1;
-  }
 }
 
 .headerText {
@@ -47,60 +26,28 @@
   font-size: 32px;
   margin-bottom: 16px;
   height: fit-content;
-
-  @media only screen and (max-width: 1023px) {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
 }
 
 .subheaderText {
   color: $secondary;
   font-weight: normal;
   line-height: 20px;
-
-  @media only screen and (min-width: 1024px) {
-    white-space: pre;
-  }
+  white-space: pre;
 }
 
 .leftBlock {
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/7;
-    padding-bottom: 24px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: min-content auto;
-    align-items: start;
-  }
-
-  @media only screen and (max-width: 1023px) {
-    grid-column: 1/1;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    grid-column: 2/8;
-  }
+  grid-column: 1/7;
+  padding-bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: min-content auto;
+  align-items: start;
 }
 
 .formContainer {
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/7;
-    display: grid;
-    grid-template-columns: inherit;
-  }
-
-  @media only screen and (max-width: 1023px) {
-    grid-column: 1/1;
-    flex-grow: 1;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    grid-column: 2/9;
-  }
+  grid-column: 1/7;
+  display: grid;
+  grid-template-columns: inherit;
 }
 
 .cartContainer {

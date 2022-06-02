@@ -7,9 +7,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 32px;
-    @media only screen and (min-width: 1024px) {
-      grid-column: 1/7;
-    }
+    grid-column: 1/7;
   }
 
   .deliveryBlock {
@@ -63,10 +61,6 @@
       color: $main-light-blue;
       margin: 8px 0 32px;
       cursor: pointer;
-      @media only screen and (max-width: 1023px) {
-        width: 100%;
-        max-width: 100%;
-      }
     }
   }
 
@@ -129,11 +123,9 @@
       padding: 0;
     }
   }
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/7;
-    display: grid;
-    grid-template-columns: inherit;
-  }
+  grid-column: 1/7;
+  display: grid;
+  grid-template-columns: inherit;
 }
 
 .label {
@@ -148,9 +140,7 @@
 }
 
 .formBlock.formInput {
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/6;
-  }
+  grid-column: 1/6;
 }
 
 .input {
@@ -184,9 +174,7 @@
 
 .formBlock.delivery,
 .formBlock.payment {
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/5;
-  }
+  grid-column: 1/5;
 }
 
 .label.delivery,
@@ -213,9 +201,7 @@
   color: $main-light-blue;
   border: 2px solid $main-light-blue;
   border-radius: 8px;
-  @media only screen and (min-width: 1024px) {
-    width: fit-content;
-  }
+  width: fit-content;
 }
 
 .addressIcon {
@@ -238,9 +224,7 @@
   position: sticky;
   display: flex;
   flex-direction: column;
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/7;
-  }
+  grid-column: 1/7;
 }
 
 .submitButton {
@@ -252,11 +236,9 @@
   border-radius: 8px;
   font-size: 18px;
   border: none;
-  @media only screen and (min-width: 1024px) {
-    width: fit-content;
-    // v2
-    margin-top: 0;
-  }
+  width: fit-content;
+  // v2
+  margin-top: 0;
 }
 
 .addressInput {
@@ -276,16 +258,12 @@
   line-height: 20px;
   margin: 20px 0 -10px;
   font-weight: 500;
-  @media only screen and (min-width: 1024px) {
-    width: 520px;
-  }
+  width: 520px;
 }
 
 //v2
 .agreementContainer {
-  @media only screen and (min-width: 1024px) {
-    grid-column: 1/6;
-  }
+  grid-column: 1/6;
   margin-bottom: 32px;
 }
 

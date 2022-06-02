@@ -44,9 +44,12 @@ const OrderPage = () => {
   };
 
   const handleDeliveryTypeChange = (deliveryType: DeliveryType) => {
-    dispatch(actions.setOrderData({
-      ...orderData,
-      deliveryType }));
+    dispatch(
+      actions.setOrderData({
+        ...orderData,
+        deliveryType,
+      })
+    );
   };
 
   return (
@@ -86,11 +89,11 @@ const OrderPage = () => {
         </div>
         <div className={styles.bottomBlock}>
           <Summary
-              deliveryType={orderData.deliveryType}
-              productsTotal={productsTotal}
-              deliveryCost={deliveryCost}
-              economySize={0}
-              productsCount={orderData.products.length}
+            deliveryType={orderData.deliveryType}
+            productsTotal={productsTotal}
+            deliveryCost={deliveryCost}
+            economySize={0}
+            productsCount={orderData.products.length}
           />
         </div>
       </div>

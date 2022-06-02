@@ -69,21 +69,19 @@ export const CustomCheckboxContainer = styled('div')`
     transform: rotate(-45deg);
   }
 
-  @media only screen and (min-width: 1024px) {
-    input[type='checkbox']:not(:checked):hover + label:after {
-      left: 4px;
-      top: 4px;
-      width: 7px;
-      height: 5px;
-      border-radius: 1px;
-      border-left: 3px solid ${baseTheme.colors.mainLightBlue};
-      border-bottom: 3px solid ${baseTheme.colors.mainLightBlue};
-      -webkit-transform: rotate(-45deg);
-      -moz-transform: rotate(-45deg);
-      -o-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-    }
+  input[type='checkbox']:not(:checked):hover + label:after {
+    left: 4px;
+    top: 4px;
+    width: 7px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 3px solid ${baseTheme.colors.mainLightBlue};
+    border-bottom: 3px solid ${baseTheme.colors.mainLightBlue};
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 
   input[type='checkbox']:not(:checked) + label:after {

@@ -15,13 +15,15 @@ const Summary = ({
   deliveryType,
   productsTotal,
   economySize,
-    deliveryCost,
-    productsCount,
+  deliveryCost,
+  productsCount,
 }: SummaryProps) => {
   const { t } = useTranslation();
 
   const total =
-    deliveryType === DeliveryType.DELIVERY ? productsTotal + deliveryCost : productsTotal;
+    deliveryType === DeliveryType.DELIVERY
+      ? productsTotal + deliveryCost
+      : productsTotal;
 
   const productsCostBlock = (
     <div className={styles.costBlock}>

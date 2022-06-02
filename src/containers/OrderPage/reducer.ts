@@ -15,7 +15,7 @@ export const orderPageInitialState: OrderPageState = {
       products: [],
       paymentMethod: PaymentMethod.ON_DELIVERY,
       deliveryType: DeliveryType.PICK_UP,
-    }
+    },
   },
 };
 

@@ -19,11 +19,6 @@
 
 .header {
   margin: 16px 0;
-
-  @media only screen and (max-width: 1023px) {
-    margin: 24px 0 16px;
-    width: 100%;
-  }
 }
 
 .headerText {
@@ -31,11 +26,6 @@
   font-weight: bold;
   font-size: 32px;
   margin-bottom: 24px;
-
-  @media only screen and (max-width: 1023px) {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
 }
 
 .subheaderText {
@@ -49,21 +39,13 @@
 }
 
 .cardsContainer {
-  @media only screen and (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 288px);
-    justify-content: space-between;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 288px);
+  justify-content: space-between;
 }
 
 .card {
-  @media only screen and (max-width: 1023px) {
-    border-bottom: 1px solid $stroking;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    margin-bottom: 24px;
-  }
+  margin-bottom: 24px;
 }
 
 .card:last-child {
@@ -72,24 +54,15 @@
 
 .contactBannerContainer {
   margin: auto;
-
-  @media only screen and (min-width: 1024px) {
-    max-width: 600px;
-  }
+  max-width: 600px;
 }
 
 .notification {
   position: fixed;
   bottom: 56px;
-  left: 0;
-  width: 100vw;
   z-index: 600;
-
-  @media only screen and (min-width: 1024px) {
-    max-height: 60px;
-    position: fixed;
-    top: 56px;
-    left: calc(50vw - 425px / 2);
-    width: 425px;
-  }
+  max-height: 60px;
+  top: 56px;
+  left: calc(50vw - 425px / 2);
+  width: 425px;
 }
