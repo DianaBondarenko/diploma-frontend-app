@@ -41,8 +41,14 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
 
   useEffect(() => {
     dispatch(actions.getCategories.request());
-    setCurrentCategoriesData(getChildrenCategories(null));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length) {
+      setCurrentCategoriesData(getChildrenCategories(null));
+    }
+    // eslint-disable-next-line
+  }, [setCurrentCategoriesData, data])
 
   const currentCategoryId = currentCategoriesData[0]?.parentId;
   const isRootCategory = currentCategoryId ? currentCategoryId === null : true;
@@ -72,7 +78,6 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
     const displayedData = showAll
       ? currentCategoriesData
       : currentCategoriesData?.slice(0, DISPLAYED_CATEGORIES_COUNT);
-
     return displayedData.sort(sortByAlphabet).map((el) => (
       <div
         className={styles.categoriesItem}
