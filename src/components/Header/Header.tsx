@@ -1,40 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import * as actions from '../../containers/LoginPage/actions';
-import { selectors } from '../../containers/LoginPage/reducer';
 import { selectors as cartSelectors } from '../../containers/CartPage/reducer';
 import logo from '../../global/media/logo.svg';
-// import searchIcon from '../../global/media/header-search-icon.svg';
-import { setToLocalStorage } from '../../global/helpers/localStorageHelper';
 import styles from './Header.module.scss';
 import { CART_ROUTE, HOME_ROUTE } from '../../global/constants';
 import { ReactComponent as CartIcon } from '../../global/media/cart.svg';
 import { ReactComponent as CatalogIcon } from '../../global/media/catalog.svg';
 import Badge from '../Badge';
 import CatalogModal from '../CatalogModal';
+import SearchBar from './components/SearchBar';
 
 const Header = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const params = new URLSearchParams(useLocation().search);
+  const searchValueFromUrl = params.get('search');
+
   const products = useSelector(cartSelectors.cartPageProducts);
   const productsInCartCount = products.length;
-  const accessToken = useSelector(selectors.accessToken);
-  let timer: NodeJS.Timeout;
+  let timer: any;
 
+  const [searchValue, setSearchValue] = useState<string>('');
   const [startAnimation, setStartAnimation] = useState<boolean>();
   const [isCatalogModalOpen, setIsCatalogModalOpen] = useState<boolean>(false);
-  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (accessToken) {
-      setIsAuthorized(true);
-    } else {
-      setIsAuthorized(false);
-    }
-  }, [accessToken]);
 
   useEffect(() => {
     setStartAnimation(true);
@@ -44,15 +34,11 @@ const Header = () => {
     return () => clearInterval(timer);
   }, [productsInCartCount]);
 
-  const handleLogout = () => {
-    dispatch(actions.logout());
-    setToLocalStorage('accessToken', null);
-    setToLocalStorage('refreshToken', null);
-  };
-
-  const handleSearch = () => {
-    console.log('search');
-  };
+  useEffect(() => {
+    if (searchValueFromUrl) {
+      setSearchValue(searchValueFromUrl);
+    }
+  }, [searchValueFromUrl]);
 
   const handleHomeClick = () => {
     history.push(HOME_ROUTE);
@@ -70,12 +56,9 @@ const Header = () => {
     <div className={styles.mainContainer}>
       <div className={styles.content}>
         <div className={styles.leftBlock}>
-          <img
-            src={logo}
-            alt="header logo"
-            className={styles.logo}
-            onClick={handleHomeClick}
-          />
+          <div onClick={handleHomeClick}>
+            <img src={logo} alt="header logo" className={styles.logo} />
+          </div>
         </div>
         <div className={styles.centralBlock}>
           <div className={styles.buttonCatalog} onClick={handleCatalogClick}>
@@ -84,7 +67,9 @@ const Header = () => {
               {t('Header.CATALOG')}
             </div>
           </div>
-          <div className={styles.searchBar}>{/* <SearchBar /> */}</div>
+          <div className={styles.searchBar}>
+            <SearchBar value={searchValue} setValue={setSearchValue} />
+          </div>
         </div>
         <div className={styles.rightBlock}>
           <div
@@ -109,16 +94,6 @@ const Header = () => {
             {t('Header.CART')}
           </div>
         </div>
-        {/* {isAuthorized && ( */}
-        {/*  <Styled.HeaderControls> */}
-        {/*    <Styled.HeaderSearchButtonContainer onClick={handleSearch}> */}
-        {/*      <img src={searchIcon} alt="search icon" /> */}
-        {/*    </Styled.HeaderSearchButtonContainer> */}
-        {/*    <Styled.HeaderLogoutButtonContainer onClick={handleLogout}> */}
-        {/*      {t('Header.LOGOUT_BTN_TEXT')} */}
-        {/*    </Styled.HeaderLogoutButtonContainer> */}
-        {/*  </Styled.HeaderControls> */}
-        {/* )} */}
       </div>
       {isCatalogModalOpen && (
         <CatalogModal onModalClose={() => setIsCatalogModalOpen(false)} />

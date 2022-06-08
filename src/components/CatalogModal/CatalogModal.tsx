@@ -48,7 +48,7 @@ const CatalogModal = ({ onModalClose }: CatalogModalProps) => {
       setCurrentCategoriesData(getChildrenCategories(null));
     }
     // eslint-disable-next-line
-  }, [setCurrentCategoriesData, data])
+  }, [setCurrentCategoriesData, data]);
 
   const currentCategoryId = currentCategoriesData[0]?.parentId;
   const isRootCategory = currentCategoryId ? currentCategoryId === null : true;

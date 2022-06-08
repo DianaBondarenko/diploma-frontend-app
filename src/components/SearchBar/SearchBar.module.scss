@@ -1,6 +1,6 @@
 @import '../../global/styles/palette';
 
-.productsSearchWrapper {
+.mainContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.productsSearchInput {
+.searchInput {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,6 +16,7 @@
   width: 100%;
   height: 48px;
   border: 1px solid $stroking;
+  background-color: $white;
   border-radius: 8px 0 0 8px;
   position: relative;
 
@@ -34,11 +35,11 @@
   }
 }
 
-.productsSearchInputActive {
+.searchInputActive {
   border: 1px solid $main-light-blue;
 }
 
-.productsSearchInputWrapper {
+.searchInputContainer {
   display: flex;
   width: 100%;
 
@@ -47,7 +48,7 @@
   }
 }
 
-.productsSearchBtn {
+.searchButton {
   width: 48px;
   height: 48px;
   border-radius: 0 8px 8px 0;
@@ -57,7 +58,7 @@
   outline: inherit;
 }
 
-.productSearchClearBtn {
+.searchClearButton {
   border: none;
   background-color: inherit;
   font-size: 14px;

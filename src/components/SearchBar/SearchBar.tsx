@@ -8,62 +8,54 @@ import { PRODUCTS_ROUTE } from '../../global/constants';
 
 interface ProductsSearchProps {
   value: string;
-  onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-  suggestionsList: {
-    [key: string]: string[];
-  } | null;
-  onSuggestionsClose: () => void;
-  isSuggestionListOpen: boolean;
-  onInputClick?: () => void;
-  onSearchClear: () => void;
+  setValue: (value: string) => void;
 }
 
 /**
  * Products search component for Main page
  */
-const SearchBar = ({
-  value,
-  onSearch,
-  suggestionsList,
-  onSuggestionsClose,
-  isSuggestionListOpen,
-  onInputClick,
-  onSearchClear,
-}: ProductsSearchProps) => {
-  // const isDesktop = useDesktopSize();
-  // const router = useRouter();
+const SearchBar = ({ value, setValue }: ProductsSearchProps) => {
   const history = useHistory();
   const { t } = useTranslation();
 
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
-  const goToProductsPage = () =>
-    history.push(`${PRODUCTS_ROUTE}?search=${value}`);
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
+
+  const handleSearchClear = () => {
+    setValue('');
+  };
+
+  const goToProductsPage = () => {
+    if (value.length) {
+      history.push(`${PRODUCTS_ROUTE}?search=${value}`);
+    }
+  };
 
   return (
-    <div className={styles.productsSearchWrapper}>
+    <div className={styles.mainContainer}>
       <ClickAwayListener
         onClickAway={() => {
-          onSuggestionsClose();
           setIsSearchActive(false);
         }}
       >
         <div
           onClick={() => {
-            onInputClick && onInputClick();
             setIsSearchActive(true);
           }}
-          className={styles.productsSearchInputWrapper}
+          className={styles.searchInputContainer}
         >
           <div
-            className={`${styles.productsSearchInput} ${
-              isSearchActive && styles.productsSearchInputActive
+            className={`${styles.searchInput} ${
+              isSearchActive && styles.searchInputActive
             }`}
           >
             <input
               placeholder={t('SearchBar.SEARCH_PLACEHOLDER')}
               value={value}
-              onChange={onSearch}
+              onChange={handleSearch}
               type="text"
               onKeyPress={(e) => {
                 if (e.key === 'Enter' && value) {
@@ -73,21 +65,18 @@ const SearchBar = ({
             />
             {value.length ? (
               <button
-                onClick={onSearchClear}
-                className={styles.productSearchClearBtn}
+                onClick={handleSearchClear}
+                className={styles.searchClearButton}
+                type="button"
               >
                 {t('SearchBar.SEARCH_CLEAR_BTN')}
               </button>
             ) : null}
-            {/* {isSuggestionListOpen && suggestionsList && ( */}
-            {/*  <SuggestionsList suggestionsList={suggestionsList} searchValue={value} /> */}
-            {/* )} */}
           </div>
           <button
-            className={styles.productsSearchBtn}
-            // onClick={() =>  {}}
+            className={styles.searchButton}
             onClick={goToProductsPage}
-            // onClick={() => value && router.push(`/products?search=${value}`)}
+            type="button"
           >
             <img src={searchIcon} alt="search icon" />
           </button>

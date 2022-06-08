@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
