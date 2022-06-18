@@ -17,7 +17,7 @@ const ProductPage = ({ match }: RouteComponentProps) => {
   const history = useHistory();
   const dispatch = useDispatch();
   // @ts-ignore
-  const productId = match.params.productId;
+  const { productId } = match.params;
   const params = new URLSearchParams(useLocation().search);
   const isFromCart = params.get('fromCart') === 'true';
   const isAddedToCart = useCheckIsProductInCart(productId);

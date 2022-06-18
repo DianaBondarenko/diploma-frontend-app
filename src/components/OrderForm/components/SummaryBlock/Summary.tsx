@@ -1,7 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Summary.module.scss';
 import { getProductsCount } from '../../../../global/helpers';
 import { DeliveryType } from '../../../../global/types';
-import { useTranslation } from 'react-i18next';
 
 export interface SummaryProps {
   deliveryType: DeliveryType;
@@ -63,7 +63,7 @@ const Summary = ({
       {Boolean(economySize && economySize > 0) && (
         <div className={styles.economyBlock}>
           {t('OrderForm.ECONOMY')} {Number(economySize)}{' '}
-          {/*{t('OrderForm.ECONOMY')} {PriceHelper.stripZeros(Number(economySize))}{' '}*/}
+          {/* {t('OrderForm.ECONOMY')} {PriceHelper.stripZeros(Number(economySize))}{' '} */}
           {t('OrderForm.CURRENCY')}
           <span className={styles.superscript}>*</span>
         </div>
@@ -72,18 +72,16 @@ const Summary = ({
   );
 
   return (
-    <>
-      <div className={styles.summaryBlock}>
-        <div className={styles.summaryLeft}>
-          {productsCostBlock}
-          {deliveryType === DeliveryType.DELIVERY && deliveryCostBlock}
-        </div>
-        <div className={styles.summaryRight}>
-          {totalPriceBlock}
-          {economyBlock}
-        </div>
+    <div className={styles.summaryBlock}>
+      <div className={styles.summaryLeft}>
+        {productsCostBlock}
+        {deliveryType === DeliveryType.DELIVERY && deliveryCostBlock}
       </div>
-    </>
+      <div className={styles.summaryRight}>
+        {totalPriceBlock}
+        {economyBlock}
+      </div>
+    </div>
   );
 };
 export default Summary;

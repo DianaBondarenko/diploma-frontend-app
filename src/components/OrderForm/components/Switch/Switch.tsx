@@ -24,27 +24,25 @@ const Switch = ({ values, defaultValue, onOptionClick }: SwitchProps) => {
   };
 
   return (
-    <>
-      <ToggleButtonGroup
-        value={value}
-        exclusive
-        onChange={handleChange}
-        fullWidth
-        className={styles.toggleContainer}
-      >
-        {Object.entries(values).map(([key, value]) => (
-          <ToggleButton
-            classes={{ selected: styles.toggleButtonActive }}
-            key={key}
-            value={key}
-            className={styles.toggleButton}
-          >
-            {value.icon && <img src={value.icon} className={styles.icon} />}
-            {value.label}
-          </ToggleButton>
-        ))}
-      </ToggleButtonGroup>
-    </>
+    <ToggleButtonGroup
+      value={value}
+      exclusive
+      onChange={handleChange}
+      fullWidth
+      className={styles.toggleContainer}
+    >
+      {Object.entries(values).map(([key, value]) => (
+        <ToggleButton
+          classes={{ selected: styles.toggleButtonActive }}
+          key={key}
+          value={key}
+          className={styles.toggleButton}
+        >
+          {value.icon && <img src={value.icon} className={styles.icon} />}
+          {value.label}
+        </ToggleButton>
+      ))}
+    </ToggleButtonGroup>
   );
 };
 export default Switch;

@@ -242,17 +242,15 @@ const ProductCard = ({
         </div>
       )}
       {isSearch && (
-        <>
-          <Button
-            variant={ButtonVariant.OUTLINED}
-            onClick={handleCartClick}
-            text={hasPrice ? buttonCartText : t('ProductCard.UNAVAILABLE_TEXT')}
-            fullWidth
-            disabled={!hasPrice}
-          >
-            {hasPrice && <CartIcon />}
-          </Button>
-        </>
+        <Button
+          variant={ButtonVariant.OUTLINED}
+          onClick={handleCartClick}
+          text={hasPrice ? buttonCartText : t('ProductCard.UNAVAILABLE_TEXT')}
+          fullWidth
+          disabled={!hasPrice}
+        >
+          {hasPrice && <CartIcon />}
+        </Button>
       )}
     </div>
   ) : (

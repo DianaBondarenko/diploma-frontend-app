@@ -10,6 +10,7 @@ export class ProductsService {
     });
     return response.data;
   };
+
   static getProductById = async (id: string) => {
     const response = await axios({
       method: 'get',

@@ -1,6 +1,7 @@
 import { FC, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { ClickAwayListener } from '@mui/material';
 import { MappedProposalData } from '../../containers/ShopsPage/types';
 import { ORDER_ROUTE } from '../../global/constants';
@@ -9,7 +10,6 @@ import styles from './PreviewOrderModal.module.scss';
 import Button from '../Button';
 import ProductCard from '../ProductCard';
 import { ProductCardVariant } from '../ProductCard/ProductCard';
-import { useDispatch } from 'react-redux';
 import * as actions from '../../containers/OrderPage/actions';
 import { orderPageInitialState } from '../../containers/OrderPage/reducer';
 
@@ -128,11 +128,11 @@ const PreviewOrderModal: FC<CheckoutModalProps> = ({
                     {totalPrice} {t('PreviewOrderModal.CURRENCY')}
                   </p>
                 </div>
-                {/*{generalEconomy > 0 && (*/}
-                {/*  <div className={styles.footerEconomyContainer}>*/}
-                {/*    {`Вы экономите ${PriceHelper.stripZeros(generalEconomy)}₸`}*/}
-                {/*  </div>*/}
-                {/*)}*/}
+                {/* {generalEconomy > 0 && ( */}
+                {/*  <div className={styles.footerEconomyContainer}> */}
+                {/*    {`Вы экономите ${PriceHelper.stripZeros(generalEconomy)}₸`} */}
+                {/*  </div> */}
+                {/* )} */}
               </div>
             )}
             <Button

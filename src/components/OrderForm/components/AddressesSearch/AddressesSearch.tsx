@@ -1,5 +1,5 @@
-import styles from './AddressesSearch.module.scss';
 import { ClickAwayListener } from '@mui/material';
+import styles from './AddressesSearch.module.scss';
 
 interface AddressesSearchProp {
   addresses: any;

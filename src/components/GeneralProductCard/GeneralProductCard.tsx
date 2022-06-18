@@ -40,7 +40,7 @@ const GeneralProductCard = ({
         )}
         <img
           className={`${styles.image} ${!isImgLoaded && styles.hidden}`}
-          src={imgSrc ? imgSrc : defaultProductImage}
+          src={imgSrc || defaultProductImage}
           alt="product image"
           onError={() => {
             setImgSrc(defaultProductImage);
