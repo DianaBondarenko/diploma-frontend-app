@@ -12,6 +12,8 @@ import Counter from '../Counter';
 import styles from './ProductCard.module.scss';
 import useCheckIsProductInCart from '../../global/hooks/useCheckIsProductInCart';
 import useProductInCartCount from '../../global/hooks/useProductInCartCount';
+import Button from '../Button';
+import { ButtonVariant } from '../Button/Button';
 
 enum UpdateCountAction {
   INCREASE = 'INCREASE',
@@ -39,9 +41,6 @@ export interface ProductCardProps {
   fromCart?: boolean;
 }
 
-/**
- * General component for display product data
- */
 const ProductCard = ({
   id,
   name,
@@ -153,7 +152,7 @@ const ProductCard = ({
         <a
           href={`${
             fromCart
-              ? `${PRODUCTS_ROUTE}/${id}?=fromcart`
+              ? `${PRODUCTS_ROUTE}/${id}?fromCart=true`
               : `${PRODUCTS_ROUTE}/${id}`
           }`}
         >
@@ -242,19 +241,18 @@ const ProductCard = ({
           )}
         </div>
       )}
-      {isSearch && hasPrice && (
-        <div
-          className={`${styles.cartButton} ${isAddedToCart && styles.active}`}
-          onClick={handleCartClick}
-        >
-          <CartIcon />
-          <div className={styles.cartButtonText}>{buttonCartText}</div>
-        </div>
-      )}
-      {isSearch && price === 0 && (
-        <div className={styles.notAvailable}>
-          {t('ProductCard.UNAVAILABLE_TEXT')}
-        </div>
+      {isSearch && (
+        <>
+          <Button
+            variant={ButtonVariant.OUTLINED}
+            onClick={handleCartClick}
+            text={hasPrice ? buttonCartText : t('ProductCard.UNAVAILABLE_TEXT')}
+            fullWidth
+            disabled={!hasPrice}
+          >
+            {hasPrice && <CartIcon />}
+          </Button>
+        </>
       )}
     </div>
   ) : (

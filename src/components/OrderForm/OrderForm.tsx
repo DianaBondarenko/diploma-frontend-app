@@ -44,9 +44,6 @@ interface OrderFormProps {
   onDeliveryTypeChange?: (deliveryType: DeliveryType) => void;
 }
 
-/**
- * General component for creating order
- */
 const OrderForm = ({
   shopId,
   onDeliveryTypeChange,

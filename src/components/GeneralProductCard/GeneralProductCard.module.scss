@@ -1,0 +1,82 @@
+@import '../../global/styles/palette';
+
+.mainContainer {
+  display: flex;
+
+  .imageBlock {
+    display: flex;
+    align-items: center;
+  }
+
+  .loadingSkeletonContainer {
+    width: 420px;
+    height: 310px;
+
+    .loadingSkeleton {
+      background-color: $stroking;
+      height: 100%;
+      margin-right: 24px;
+    }
+  }
+
+  .image {
+    width: 396px;
+    height: auto;
+    margin: 0 24px 16px 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .contentBlock {
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+
+    .name {
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+    .article {
+      font-size: 14px;
+      color: $tertiary;
+      margin-top: 8px;
+    }
+
+    .description {
+      font-size: 16px;
+      color: $secondary;
+      margin-top: 8px;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 24px;
+      color: $primary;
+      padding: 16px 0 24px;
+    }
+  }
+}
+
+.buttonCart {
+  max-width: 170px;
+}
+
+.notAvailableProductDesktop {
+  margin-top: 40px;
+  font-size: 20px;
+  color: $tertiary;
+}
+
+.counterWrapper {
+  & > div {
+    margin-left: 0;
+    width: max-content;
+  }
+}
+
+.disabledCounter {
+  pointer-events: none;
+}

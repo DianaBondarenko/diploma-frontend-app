@@ -8,9 +8,6 @@ interface BadgeProps {
   isActive?: boolean;
 }
 
-/**
- * General component for display some content in a badge
- */
 const BadgeComponent: FC<BadgeProps> = ({
   badgeContent,
   isActive,

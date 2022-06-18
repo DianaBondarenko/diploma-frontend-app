@@ -17,9 +17,6 @@ interface ShopCardProps {
   isSelected: boolean;
 }
 
-/**
- * General component for display pharmacy data
- */
 const ShopCard = (props: ShopCardProps) => {
   const {
     id,

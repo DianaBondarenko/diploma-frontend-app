@@ -12,19 +12,6 @@ interface ActionType {
   error: (payload?: any) => any;
 }
 
-/**
- * Use this helper function to generate actions and types automatically
- * This will return a object generating 3 actions and 3 types:
- * @param {string} action (@example "GET_DATA")
- * @returns {object} @example {
- *   REQUEST: "GET_DATA_REQUEST",
- *   SUCCESS: "GET_DATA_SUCCESS",
- *   ERROR: "GET_DATA_ERROR",
- *   request: payload => ({ type, payload, }), // type: GET_DATA_REQUEST
- *   success: payload => ({ type, payload, }), // type: GET_DATA_SUCCESS
- *   error: payload => ({ type, payload, }), // type: GET_DATA_ERROR
- * }
- */
 export const asyncActionsCreator = (action: string) => {
   const values = ['SUCCESS', 'ERROR', 'REQUEST'];
   const types = values.reduce((acc, value) => {

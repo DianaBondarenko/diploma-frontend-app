@@ -18,6 +18,12 @@
       "NOTHING_FOUND_IN_CATEGORY": "Нічого не найдено в категорії",
       "SUBTITLE_TEXT": "знайдено"
     },
+    "ProductPage": {
+      "ACTIVE_BUTTON_TEXT": "Додано",
+      "INACTIVE_BUTTON_TEXT": "У кошик",
+      "ADDED_TO_CART_MESSAGE": "Товар додано ",
+      "PRODUCT_DESCRIPTION_TITLE": "Опис"
+    },
     "CartPage": {
       "TITLE_TEXT": "Кошик",
       "SUBTITLE_TEXT": "Додано",
@@ -56,6 +62,10 @@
       "NEEDS_RECIPE_TEXT": "За рецептом",
       "CURRENCY": "грн",
       "UNIT": "шт"
+    },
+    "GeneralProductCard": {
+      "CURRENCY": "грн",
+      "NOT_AVAILABLE": "Немає в наявності"
     },
     "SearchBar": {
       "SEARCH_PLACEHOLDER": "Пошук",

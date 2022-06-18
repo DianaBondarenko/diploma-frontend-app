@@ -1,12 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { HOME_ROUTE, PRODUCTS_ROUTE } from '../../global/constants';
+import { CART_ROUTE, HOME_ROUTE, PRODUCTS_ROUTE } from '../../global/constants';
 import BreadCrumbs from './BreadCrumbs';
 
 interface ProductBreadCrumbsProps {
   productName: string;
+  isFromCart: boolean;
 }
 
-const ProductBreadCrumbs = ({ productName }: ProductBreadCrumbsProps) => {
+const ProductBreadCrumbs = ({
+  productName,
+  isFromCart,
+}: ProductBreadCrumbsProps) => {
   const { t } = useTranslation();
   const searchValue = 'sessionStorageSearchValue';
   const categoryValue = {
@@ -20,8 +24,12 @@ const ProductBreadCrumbs = ({ productName }: ProductBreadCrumbsProps) => {
       route: HOME_ROUTE,
     },
     {
-      label: t('BreadCrumbs.RESULT_OF_SEARCH'),
-      route: searchValue
+      label: isFromCart
+        ? t('BreadCrumbs.CART')
+        : t('BreadCrumbs.RESULT_OF_SEARCH'),
+      route: isFromCart
+        ? CART_ROUTE
+        : searchValue
         ? `${PRODUCTS_ROUTE}?search=${searchValue}`
         : `${PRODUCTS_ROUTE}?categoryId=${categoryValue.id}&categoryName=${categoryValue.name}`,
     },

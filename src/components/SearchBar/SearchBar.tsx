@@ -11,9 +11,6 @@ interface ProductsSearchProps {
   setValue: (value: string) => void;
 }
 
-/**
- * Products search component for Main page
- */
 const SearchBar = ({ value, setValue }: ProductsSearchProps) => {
   const history = useHistory();
   const { t } = useTranslation();

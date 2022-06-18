@@ -2,11 +2,6 @@ import { CART_KEY, LOCAL_STORAGE_KEY, ORDER_KEY } from '../constants';
 import { Cart } from '../../containers/CartPage/types';
 import { OrderData } from '../../containers/OrderPage/types';
 
-/**
- * The function checks if localStorage is available.
- *
- * @returns boolean
- */
 export const isLocalStorageAvailable = (): boolean => {
   if (typeof window !== 'undefined') {
     if (window.localStorage) {
@@ -28,12 +23,6 @@ export const isLocalStorageAvailable = (): boolean => {
   return false;
 };
 
-/**
- * The function get properties from localStorage.
- *
- * @param key: string // property name
- * @returns property
- */
 export const getFromLocalStorage = (key: string) => {
   if (isLocalStorageAvailable()) {
     const localObject = JSON.parse(
@@ -43,12 +32,6 @@ export const getFromLocalStorage = (key: string) => {
   }
 };
 
-/**
- * The function set properties to localStorage.
- *
- * @param key: string // property key
- * @param item: any // property value
- */
 export const setToLocalStorage = (key: string, item: any) => {
   if (isLocalStorageAvailable()) {
     const localObject = JSON.parse(
@@ -59,22 +42,12 @@ export const setToLocalStorage = (key: string, item: any) => {
   }
 };
 
-/**
- * The function gets current cart from localStorage.
- *
- * @returns cart object or null
- */
 export const getCurrentCart = () => {
   if (isLocalStorageAvailable()) {
     return getFromLocalStorage(CART_KEY) || [];
   }
 };
 
-/**
- * The function updates current cart in localStorage.
- *
- * @param updatedCart: Cart // new cart object
- */
 export const updateCart = (updatedCart: Cart) => {
   setToLocalStorage(CART_KEY, updatedCart);
 };
