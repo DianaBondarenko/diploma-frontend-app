@@ -1,0 +1,48 @@
+@import '../../global/styles/palette';
+
+.mainContainer {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 500px;
+  padding: 0 64px 45px;
+}
+
+.description {
+  text-align: center;
+  width: 360px;
+
+  .title {
+    font-weight: bold;
+    font-size: 24px;
+    padding-top: 18px;
+    color: $primary;
+  }
+
+  .content {
+    padding-top: 8px;
+    font-size: 16px;
+    line-height: 20px;
+    color: $secondary;
+  }
+}
+
+.mainButton {
+  margin-top: 15px;
+}
+
+.orderNumber {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  color: $secondary;
+  font-weight: bold;
+
+  .number {
+    color: $primary;
+    padding-left: 4px;
+  }
+}

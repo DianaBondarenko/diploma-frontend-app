@@ -1,6 +1,5 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import {
   ErrorMessage,
@@ -12,31 +11,12 @@ import {
 } from 'formik';
 import styles from './OrderForm.module.scss';
 import {
-  DEFAULT_CITY,
   DELIVERY_TYPES,
-  getAddressData,
   INITIAL_ORDER_FORM_STATE,
   PAYMENT_METHODS,
-  PICK_UP_ADDRESS_STATE,
 } from './constants';
 import Switch from './components/Switch';
-// import Summary from '@/components/OrderForm/components/SummaryBlock';
-// import Confirmation from '@/components/Confirmation';
-// import CodeConfirmation from '@/components/CodeConfirmation';
 import { DeliveryType, PaymentMethod } from '../../global/types';
-// import { ResponseStatusType } from '../../containers/OrderPage/types';
-// import {
-//   formatAddressInfo,
-//   formatOrderInfo,
-//   formatOrderInfoAnon,
-//   formatPhoneNumberToBeValid,
-//   sortAddressesData,
-// } from '@global/helpers';
-// import {
-//   clearCart,
-//   deleteOrderInfo,
-//   getFromLocalStorage,
-// } from '@global/helpers/localStorageHelper';
 import CustomCheckbox from '../CustomCheckbox';
 import placeMarkIcon from '../../global/media/placemark.svg';
 
@@ -57,7 +37,6 @@ export interface FormValues {
 interface OrderFormProps {
   productsList: any[];
   productsTotal: number;
-  // deliveryCost: number;
   economySize: number;
   needsRecipe: boolean;
   shopId: string;
@@ -69,36 +48,20 @@ interface OrderFormProps {
  * General component for creating order
  */
 const OrderForm = ({
-  productsList,
-  productsTotal,
-  economySize,
-  needsRecipe,
   shopId,
   onDeliveryTypeChange,
   handleOrderCreation,
 }: OrderFormProps) => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const [orderStatus, setOrderStatus] = useState<any | null>(null);
-  // const [orderStatus, setOrderStatus] = useState<ResponseStatusType | null>(null);
-  const [orderNumber, setOrderNumber] = useState<number | null | string>(null);
   const [isAddAddressShowed, setIsAddAddressShowed] = useState<boolean>(false);
   const [isAddressSaved, setIsAddressSaved] = useState<boolean>(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [buttonVisible, setButtonVisible] = useState<boolean>(true);
-  // const [showCodeConfirmationModal, setShowCodeConfirmationModal] = useState(false);
   const [FORM_STATE, SET_FORM_STATE] = useState<FormValues>(
     INITIAL_ORDER_FORM_STATE
   );
 
   const handleAddAddress = () => {
     setIsAddAddressShowed(true);
-  };
-
-  const closeBanner = () => {
-    setShowConfirmationModal(false);
-    // deleteOrderInfo();
   };
 
   const handleDeliveryChange = (
@@ -137,23 +100,6 @@ const OrderForm = ({
     }
 
     return errors;
-  };
-
-  const handleSaveAddressClick = async (props: FormikProps<FormValues>) => {
-    const { address, apartmentsNumber, floorNumber, enterNumber } =
-      props.values;
-    const errors: FormikErrors<FormValues> = {};
-
-    if (isAddAddressShowed && !address) {
-      errors.address = t('OrderForm.ADDRESS_ERROR');
-    }
-    if (isAddAddressShowed && !apartmentsNumber) {
-      errors.apartmentsNumber = t('OrderForm.APARTMENTS_NUMBER_ERROR');
-    }
-    if (Object.values(errors).length > 0) {
-      props.setErrors(errors);
-      return;
-    }
   };
 
   const handleInputChange = (
@@ -195,32 +141,11 @@ const OrderForm = ({
     });
   };
 
-  const handleOrderSubmit = (
-    orderStatus: any,
-    // orderStatus: ResponseStatusType,
-    orderNumber: number | null | string
-  ) => {
-    setOrderNumber(orderNumber);
-    setOrderStatus(orderStatus);
-    // if (orderStatus === ResponseStatusType.SUCCESS) {
-    //   clearCart();
-    //   dispatch({ type: 'clearCart' });
-    // }
-    // setShowCodeConfirmationModal(false);
-    setShowConfirmationModal(true);
-  };
-
-  const handleSubmitForm = async (values: FormValues) => {
-    console.log(values);
-    try {
-      handleOrderCreation(values);
-    } catch (error: any) {
-      console.log(error);
-    }
+  const handleSubmitForm = (values: FormValues) => {
+    handleOrderCreation(values);
   };
 
   const handleAddressChange = () => {
-    setButtonVisible(false);
     setIsAddressSaved(false);
     setIsAddAddressShowed(true);
   };
@@ -324,7 +249,6 @@ const OrderForm = ({
                     } ${styles.w100}`}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       handleInputChange(props, e, 'address');
-                      setButtonVisible(true);
                       setIsAddressSaved(false);
                     }}
                   />
@@ -347,7 +271,6 @@ const OrderForm = ({
                   } ${styles.w100}`}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     handleInputChange(props, e, 'apartmentsNumber');
-                    setButtonVisible(true);
                   }}
                 />
                 {props.errors.apartmentsNumber && (
@@ -370,7 +293,6 @@ const OrderForm = ({
                       } ${styles.w100}`}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         handleInputChange(props, e, 'enterNumber');
-                        setButtonVisible(true);
                       }}
                     />
                   </div>
@@ -388,7 +310,6 @@ const OrderForm = ({
                       } ${styles.w100}`}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         handleInputChange(props, e, 'floorNumber');
-                        setButtonVisible(true);
                       }}
                     />
                   </div>

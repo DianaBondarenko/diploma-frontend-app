@@ -1,1 +1,2 @@
 export const SET_ORDER_DATA = 'SET_ORDER_DATA';
+export const CLEAR_ORDER_DATA = 'CLEAR_ORDER_DATA';

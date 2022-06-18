@@ -10,3 +10,4 @@ export const updateProduct = createAction<{
   id: string;
   productInfo: ProductInCartData;
 }>(constants.UPDATE_PRODUCT);
+export const clearCart = createAction(constants.CLEAR_CART);

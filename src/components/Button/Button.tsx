@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './Button.module.scss';
 
-enum ButtonVariant {
+export enum ButtonVariant {
   CONTAINED = 'CONTAINED',
   OUTLINED = 'OUTLINED',
 }

@@ -107,7 +107,6 @@ const ShopsPage = () => {
                         'countDesired'
                       )}
                       onShopChoice={() => {
-                        console.log('choice');
                         handleProductsModal(shop);
                       }}
                       // onCheckout={() => {}}

@@ -34,6 +34,10 @@ const reducer = createReducer(initialState, {
     state.cartPage.products = updatedCartProducts;
     updateCart(updatedCartProducts);
   },
+  [actions.clearCart.type]: (state, action) => {
+    state.cartPage.products = [];
+    updateCart([]);
+  },
 });
 
 const cartPageProducts = (state: AppState) =>

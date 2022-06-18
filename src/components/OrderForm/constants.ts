@@ -37,14 +37,3 @@ export const INITIAL_ORDER_FORM_STATE = {
   agreementAccepted: false,
   addressSaved: false,
 };
-
-export const getAddressData = (state: any) => {
-  return {
-    address: state.address,
-    city: DEFAULT_CITY,
-    entrance: state.enterNumber,
-    flat: state.apartmentsNumber,
-    floor: state.florNumber,
-    id: state.id,
-  };
-};

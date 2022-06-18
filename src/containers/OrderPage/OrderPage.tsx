@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { DeliveryType } from '../../global/types';
@@ -7,12 +8,14 @@ import { getProductsCount } from '../../global/helpers';
 import { selectors } from './reducer';
 import { OrderService } from './service';
 import * as actions from './actions';
+import * as cartActions from '../CartPage/actions';
+import styles from './OrderPage.module.scss';
 import ProductCard from '../../components/ProductCard';
 import { ProductCardVariant } from '../../components/ProductCard/ProductCard';
 import OrderForm from '../../components/OrderForm';
 import Summary from '../../components/OrderForm/components/SummaryBlock';
 import OrderBreadCrumbs from '../../components/Breadcrumbs/OrderBreadCrumbs';
-import styles from './OrderPage.module.scss';
+import ConfirmationModal from '../../components/ConfirmationModal';
 
 const OrderPage = () => {
   const { t } = useTranslation();
@@ -20,6 +23,8 @@ const OrderPage = () => {
   const orderData = useSelector(selectors.orderPageOrderData);
   const shopId = orderData?.shopId;
   const products = orderData?.products;
+
+  const [orderStatus, setOrderStatus] = useState<Status | null>(null);
 
   const deliveryCost = 30;
 
@@ -30,35 +35,21 @@ const OrderPage = () => {
       0
     ) || 0;
 
-  // const economySize =
-  //     products?.reduce(
-  //         (sum, { servicePrice, price, count }) => sum + (price - servicePrice) * count,
-  //         0,
-  //     ) || 0;
-
   const handleOrderCreation = async (values: FormValues) => {
-    console.log(orderData, values);
-    // dispatch(
-    //     actions.setOrderData({
-    //       ...orderData,
-    //       phoneNumber: values.phone,
-    //       deliveryType: values.deliveryType,
-    //       paymentMethod: values.paymentMethod,
-    //       k: 'k',
-    //     })
-    // );
     try {
       const response = await OrderService.createOrder({
         ...orderData,
         ...values,
       });
       if (response.status === Status.SUCCESS) {
-        console.log('success order');
+        dispatch(cartActions.clearCart());
+        dispatch(actions.clearOrderData());
+        setOrderStatus(Status.SUCCESS);
       } else {
-        console.log(response.status);
+        setOrderStatus(Status.ERROR);
       }
     } catch (error) {
-      console.log(error);
+      setOrderStatus(Status.ERROR);
     }
   };
 
@@ -70,6 +61,12 @@ const OrderPage = () => {
       })
     );
   };
+
+  const handleModalClose = () => {
+    setOrderStatus(null);
+  };
+
+  const showModal = orderStatus !== null;
 
   return (
     <>
@@ -119,6 +116,14 @@ const OrderPage = () => {
           />
         </div>
       </div>
+      {showModal && (
+        <ConfirmationModal
+          type={orderStatus}
+          isOpen={showModal}
+          onModalClose={handleModalClose}
+          orderNumber={null}
+        />
+      )}
     </>
   );
 };

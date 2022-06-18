@@ -111,7 +111,6 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
         <InfoWindow
           position={getLatLon(activeMark.coordinates)}
           onCloseClick={() => {
-            console.log('close');
             setActiveMark(null);
           }}
         >

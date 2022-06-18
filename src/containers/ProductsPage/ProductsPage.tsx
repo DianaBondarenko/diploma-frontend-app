@@ -25,7 +25,6 @@ const ProductsPage = () => {
   const sortedData = data
     ? data.slice().sort((_a, b) => (b.price ? 1 : -1))
     : data;
-  console.log(data ? data.slice().sort((_a, b) => (b.price ? 1 : -1)) : data);
 
   useEffect(() => {
     if (searchValue) {

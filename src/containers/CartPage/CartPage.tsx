@@ -40,7 +40,7 @@ const CartPage = () => {
               ))}
           </div>
         ) : (
-          <div className={styles.contactBannerContainer}>ADD SMTH</div>
+          <div className={styles.contactBannerContainer}></div>
         )}
         <div className={styles.deliveryPayContainer}>
           <DeliveryPayBanner disabled={!productsInCartCount} />

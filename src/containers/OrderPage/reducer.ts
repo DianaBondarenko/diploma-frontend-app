@@ -7,13 +7,14 @@ import {
   updateOrder,
 } from '../../global/helpers/localStorageHelper';
 
+const orderInitialState = {
+  shopId: '',
+  products: [],
+  deliveryType: DeliveryType.PICK_UP,
+};
 export const orderPageInitialState: OrderPageState = {
   orderPage: {
-    order: getCurrentOrder() || {
-      shopId: '',
-      products: [],
-      deliveryType: DeliveryType.PICK_UP,
-    },
+    order: getCurrentOrder() || orderInitialState,
   },
 };
 
@@ -21,6 +22,10 @@ const reducer = createReducer(orderPageInitialState, {
   [actions.setOrderData.type]: (state, action) => {
     state.orderPage.order = action.payload;
     updateOrder(action.payload);
+  },
+  [actions.clearOrderData.type]: (state, action) => {
+    state.orderPage.order = orderInitialState;
+    updateOrder(orderInitialState);
   },
 });
 
