@@ -20,7 +20,7 @@ export class OrderService {
     } = payload;
     let body = {
       shop_id: shopId,
-      phone,
+      // phone,
       products: products?.map((product) => ({
         product_id: product.id,
         count: product.countDesired,

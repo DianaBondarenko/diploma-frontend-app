@@ -82,7 +82,11 @@ const ShopCard = (props: ShopCardProps) => {
         </div>
       </div>
       <div className={styles.orderButton}>
-        <Button onClick={onShopChoice} text={t('ShopCard.BUTTON_TEXT')} />
+        <Button
+          onClick={onShopChoice}
+          text={t('ShopCard.BUTTON_TEXT')}
+          disabled={!price}
+        />
       </div>
     </div>
   );
