@@ -36,7 +36,6 @@ export interface ProductCardProps {
   countDesired?: number;
   variant: ProductCardVariant;
   manufacturer?: string;
-  servicePrice?: number;
   fromCart?: boolean;
 }
 
@@ -53,7 +52,6 @@ const ProductCard = ({
   variant,
   manufacturer,
   countDesired: productCountDesired,
-  servicePrice,
   count = 0,
   fromCart,
 }: ProductCardProps) => {
@@ -231,10 +229,10 @@ const ProductCard = ({
           )}
         </div>
       )}
-      {isModal && count > 0 && servicePrice && (
+      {isModal && count > 0 && price && (
         <div className={styles.rightBlock}>
           <div className={styles.price}>
-            {(count * servicePrice)?.toFixed(2)}{' '}
+            {(count * price)?.toFixed(2)}{' '}
             <span className={styles.currency}>{t('ProductCard.CURRENCY')}</span>
           </div>
           {isOrder && (

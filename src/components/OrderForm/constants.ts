@@ -25,14 +25,13 @@ export const PICK_UP_ADDRESS_STATE = {
 };
 
 export const INITIAL_ORDER_FORM_STATE = {
-  name: '',
   phone: '+380',
   address: '',
   apartmentsNumber: '',
   enterNumber: '',
-  florNumber: '',
+  floorNumber: '',
   comment: '',
-  default: false,
+  id: '',
   deliveryType: DeliveryType.DELIVERY,
   paymentMethod: PaymentMethod.ON_DELIVERY,
   agreementAccepted: false,

@@ -48,6 +48,7 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: GOOGLE_API_KEY,
+    language: 'uk',
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);

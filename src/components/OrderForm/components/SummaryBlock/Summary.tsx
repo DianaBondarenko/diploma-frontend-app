@@ -53,7 +53,7 @@ const Summary = ({
     <div className={styles.totalPrice}>
       {t('OrderForm.TOTAL')}{' '}
       <span className={styles.highlighted}>
-        {productsTotal} {t('OrderForm.CURRENCY')}
+        {total} {t('OrderForm.CURRENCY')}
       </span>
     </div>
   );

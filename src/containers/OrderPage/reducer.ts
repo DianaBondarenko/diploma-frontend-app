@@ -11,9 +11,7 @@ export const orderPageInitialState: OrderPageState = {
   orderPage: {
     order: getCurrentOrder() || {
       shopId: '',
-      phoneNumber: '',
       products: [],
-      paymentMethod: PaymentMethod.ON_DELIVERY,
       deliveryType: DeliveryType.PICK_UP,
     },
   },

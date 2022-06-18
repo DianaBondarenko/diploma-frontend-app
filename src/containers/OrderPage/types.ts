@@ -3,15 +3,28 @@ import { DeliveryType, PaymentMethod } from '../../global/types';
 
 export interface OrderData {
   shopId: string;
-  phoneNumber: string;
+  // phoneNumber: string;
   products: MappedProposalData[];
-  paymentMethod: PaymentMethod;
+  // paymentMethod: PaymentMethod;
   deliveryType: DeliveryType;
 }
 
 export enum Status {
   SUCCESS = 'success',
   ERROR = 'error',
+}
+
+export interface OrderPayload {
+  shopId: string;
+  phone: string;
+  products: MappedProposalData[];
+  paymentMethod: PaymentMethod;
+  deliveryType: DeliveryType;
+  address: string;
+  apartmentsNumber: string;
+  floorNumber: string;
+  enterNumber: string;
+  comment: string;
 }
 
 export interface OrderResponseData {

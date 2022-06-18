@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { DeliveryType } from '../../global/types';
 import { Status } from './types';
+import { FormValues } from '../../components/OrderForm/OrderForm';
 import { getProductsCount } from '../../global/helpers';
 import { selectors } from './reducer';
 import { OrderService } from './service';
@@ -35,12 +36,29 @@ const OrderPage = () => {
   //         0,
   //     ) || 0;
 
-  const handleOrderCreation = async () => {
-    const response = await OrderService.createOrder(orderData);
-    if (response.status !== Status.SUCCESS) {
-      console.log('err');
-    } else {
-      console.log('success order');
+  const handleOrderCreation = async (values: FormValues) => {
+    console.log(orderData, values);
+    // dispatch(
+    //     actions.setOrderData({
+    //       ...orderData,
+    //       phoneNumber: values.phone,
+    //       deliveryType: values.deliveryType,
+    //       paymentMethod: values.paymentMethod,
+    //       k: 'k',
+    //     })
+    // );
+    try {
+      const response = await OrderService.createOrder({
+        ...orderData,
+        ...values,
+      });
+      if (response.status === Status.SUCCESS) {
+        console.log('success order');
+      } else {
+        console.log(response.status);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

@@ -1,0 +1,63 @@
+@import '../../global/styles/palette';
+
+.mainContainer {
+  border-top: 1px solid $stroking;
+  padding: 0 32px;
+}
+
+.contentContainer {
+  display: grid;
+  max-width: 1216px;
+  margin: auto;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.contentBlock {
+  margin: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 10px;
+  grid-column: 4/10;
+}
+
+.logo {
+  width: 95px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.leftBlock {
+  .description {
+    padding-top: 10px;
+    color: $secondary;
+    font-size: 14px;
+  }
+}
+
+.rightBlock {
+  padding-right: 10px;
+  width: 110px;
+}
+
+.linksContainer {
+  display: flex;
+  padding-bottom: 5px;
+
+  a {
+    &:last-child {
+      margin-left: 12px;
+    }
+  }
+}
+
+.phoneContainer {
+  display: flex;
+  padding-bottom: 8px;
+  color: $secondary;
+  font-size: 14px;
+  justify-content: space-between;
+
+  .icon {
+    margin-right: -20px;
+  }
+}

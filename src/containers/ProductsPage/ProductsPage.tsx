@@ -22,6 +22,10 @@ const ProductsPage = () => {
 
   const loading = useSelector(selectors.productsPageLoading);
   const data = useSelector(selectors.productsPageData);
+  const sortedData = data
+    ? data.slice().sort((_a, b) => (b.price ? 1 : -1))
+    : data;
+  console.log(data ? data.slice().sort((_a, b) => (b.price ? 1 : -1)) : data);
 
   useEffect(() => {
     if (searchValue) {
@@ -33,14 +37,14 @@ const ProductsPage = () => {
 
   const pageContent = (
     <>
-      {data && (
+      {sortedData && (
         <>
           <div className={styles.topBlock}>
             <div className={styles.header}>
               <div className={styles.headerText}>
                 {searchValue ? (
                   <>
-                    {data.length
+                    {sortedData.length
                       ? t('ProductsPage.TITLE_TEXT')
                       : t('ProductsPage.NOTHING_FOUND')}{' '}
                     <br />“{searchValue}”
@@ -49,7 +53,7 @@ const ProductsPage = () => {
                   <>
                     {categoryId && categoryName && (
                       <>
-                        {!data.length &&
+                        {!sortedData.length &&
                           t('ProductsPage.NOTHING_FOUND_IN_CATEGORY')}{' '}
                         {categoryName}
                       </>
@@ -58,13 +62,13 @@ const ProductsPage = () => {
                 )}
               </div>
               <div className={styles.subheaderText}>
-                {getProductsCount(data.length)}{' '}
+                {getProductsCount(sortedData.length)}{' '}
                 {t('ProductsPage.SUBTITLE_TEXT')}
               </div>
             </div>
           </div>
           <div className={styles.cardsContainer}>
-            {data.map((product) => (
+            {sortedData.map((product) => (
               <div key={product.id} className={styles.card}>
                 <ProductCard variant={ProductCardVariant.SEARCH} {...product} />
               </div>

@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 import {
   ErrorMessage,
   Field,
@@ -22,7 +23,6 @@ import Switch from './components/Switch';
 // import Summary from '@/components/OrderForm/components/SummaryBlock';
 // import Confirmation from '@/components/Confirmation';
 // import CodeConfirmation from '@/components/CodeConfirmation';
-// import {OrderService} from '../../containers/OrderPage/service';
 import { DeliveryType, PaymentMethod } from '../../global/types';
 // import { ResponseStatusType } from '../../containers/OrderPage/types';
 // import {
@@ -38,19 +38,15 @@ import { DeliveryType, PaymentMethod } from '../../global/types';
 //   getFromLocalStorage,
 // } from '@global/helpers/localStorageHelper';
 import CustomCheckbox from '../CustomCheckbox';
-// import { AddressData, AddressesData } from '@global/types/addresses';
-// import AddressesService from '@global/services/AddressesService';
-// import AddressesSearch from '@/components/OrderForm/components/AddressesSearch';
 import placeMarkIcon from '../../global/media/placemark.svg';
-import { isValidPhoneNumber } from 'react-phone-number-input';
 
 export interface FormValues {
   phone: string;
   address: string;
   apartmentsNumber: string;
-  florNumber: string;
+  floorNumber: string;
   enterNumber: string;
-  default: boolean;
+  comment: string;
   id: number | string;
   deliveryType: DeliveryType;
   paymentMethod: PaymentMethod;
@@ -65,7 +61,7 @@ interface OrderFormProps {
   economySize: number;
   needsRecipe: boolean;
   shopId: string;
-  handleOrderCreation: () => void;
+  handleOrderCreation: (values: FormValues) => void;
   onDeliveryTypeChange?: (deliveryType: DeliveryType) => void;
 }
 
@@ -92,23 +88,12 @@ const OrderForm = ({
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [buttonVisible, setButtonVisible] = useState<boolean>(true);
   // const [showCodeConfirmationModal, setShowCodeConfirmationModal] = useState(false);
-  const [isAddressesListOpen, setAddressesListOpen] = useState<boolean>(false);
-  const [isErrorTooltipNoAddress, setErrorTooltipNoAddress] =
-    useState<boolean>(false);
-  const [addressesList, setAddressesList] = useState<any[] | null | []>(null);
-  // const [addressesList, setAddressesList] = useState<AddressData[] | null | []>(null);
-  const [alreadyExist, setAlreadyExist] = useState<boolean>(false);
-  const [FORM_STATE, SET_FORM_STATE] = useState<any>(INITIAL_ORDER_FORM_STATE);
+  const [FORM_STATE, SET_FORM_STATE] = useState<FormValues>(
+    INITIAL_ORDER_FORM_STATE
+  );
 
   const handleAddAddress = () => {
     setIsAddAddressShowed(true);
-    // if (getFromLocalStorage('auth')?.accessToken) {
-    //   getAddress().then((res: any) => {
-    //     setAddressesList(res);
-    //     const defaultAddress: AddressData = res?.find((item: AddressData) => item.is_default);
-    //     handleSetAddress(defaultAddress);
-    //   });
-    // }
   };
 
   const closeBanner = () => {
@@ -123,7 +108,7 @@ const OrderForm = ({
     props.setFieldValue('deliveryType', deliveryType);
     if (deliveryType === DeliveryType.PICK_UP) {
       props.setErrors({ ...props.errors, address: '', apartmentsNumber: '' });
-      // setIsAddAddressShowed(true);
+      setIsAddAddressShowed(true);
     }
     if (onDeliveryTypeChange) {
       onDeliveryTypeChange(deliveryType);
@@ -155,7 +140,8 @@ const OrderForm = ({
   };
 
   const handleSaveAddressClick = async (props: FormikProps<FormValues>) => {
-    const { address, apartmentsNumber, florNumber, enterNumber } = props.values;
+    const { address, apartmentsNumber, floorNumber, enterNumber } =
+      props.values;
     const errors: FormikErrors<FormValues> = {};
 
     if (isAddAddressShowed && !address) {
@@ -225,8 +211,9 @@ const OrderForm = ({
   };
 
   const handleSubmitForm = async (values: FormValues) => {
+    console.log(values);
     try {
-      handleOrderCreation();
+      handleOrderCreation(values);
     } catch (error: any) {
       console.log(error);
     }
@@ -337,17 +324,10 @@ const OrderForm = ({
                     } ${styles.w100}`}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       handleInputChange(props, e, 'address');
-                      setAlreadyExist(false);
                       setButtonVisible(true);
                       setIsAddressSaved(false);
                     }}
                   />
-                  {isErrorTooltipNoAddress && isAddAddressShowed && (
-                    <div className={styles.errorTooltip}>
-                      {isErrorTooltipNoAddress &&
-                        t('OrderForm.ERROR_TOOLTIP_NO_ADDRESS')}
-                    </div>
-                  )}
                 </div>
                 {props.errors.address && (
                   <div className={`${styles.label} ${styles.error}`}>
@@ -367,7 +347,6 @@ const OrderForm = ({
                   } ${styles.w100}`}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     handleInputChange(props, e, 'apartmentsNumber');
-                    setAlreadyExist(false);
                     setButtonVisible(true);
                   }}
                 />
@@ -391,26 +370,24 @@ const OrderForm = ({
                       } ${styles.w100}`}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         handleInputChange(props, e, 'enterNumber');
-                        setAlreadyExist(false);
                         setButtonVisible(true);
                       }}
                     />
                   </div>
                   <div className={styles.w50}>
-                    <label htmlFor="florNumber" className={styles.label}>
+                    <label htmlFor="floorNumber" className={styles.label}>
                       {t('OrderForm.FLOR_INPUT_LABEL')}
                     </label>
                     <Field
-                      id="florNumber"
-                      name="florNumber"
+                      id="floorNumber"
+                      name="floorNumber"
                       type="text"
                       placeholder={t('OrderForm.FLOR_PLACEHOLDER')}
                       className={`${styles.input} ${
-                        props.errors.florNumber && styles.error
+                        props.errors.floorNumber && styles.error
                       } ${styles.w100}`}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        handleInputChange(props, e, 'florNumber');
-                        setAlreadyExist(false);
+                        handleInputChange(props, e, 'floorNumber');
                         setButtonVisible(true);
                       }}
                     />
@@ -428,11 +405,6 @@ const OrderForm = ({
                     props.errors.comment && styles.error
                   } ${styles.w100}`}
                 />
-                {alreadyExist && (
-                  <div className={`${styles.label} ${styles.error}`}>
-                    {t('OrderForm.ALREADY_EXIST')}
-                  </div>
-                )}
               </div>
             )}
           {isAddressSaved &&
@@ -449,8 +421,8 @@ const OrderForm = ({
                   {props.values.enterNumber
                     ? `, ${props.values.enterNumber} п-зд`
                     : null}
-                  {props.values.florNumber
-                    ? `, ${props.values.florNumber} этаж.`
+                  {props.values.floorNumber
+                    ? `, ${props.values.floorNumber} этаж.`
                     : null}
                 </div>
                 {props.values.comment?.length ? (
@@ -468,9 +440,8 @@ const OrderForm = ({
                       address: props.values?.address,
                       apartmentsNumber: props.values?.apartmentsNumber,
                       enterNumber: props.values?.enterNumber,
-                      florNumber: props.values?.florNumber,
-                      id: props.values?.id,
-                      default: props.values?.default,
+                      floorNumber: props.values?.floorNumber,
+                      comment: props.values?.comment,
                     });
                     handleAddressChange();
                   }}
@@ -486,23 +457,23 @@ const OrderForm = ({
             >
               {t('OrderForm.PAYMENT_LABEL')}
             </label>
-            {props.values.deliveryType === DeliveryType.DELIVERY ? (
-              <div className={styles.paymentBlock}>
-                {/*<img*/}
-                {/*  src={PAYMENT_METHODS[PaymentMethod.KASPI_PAY].icon}*/}
-                {/*  className={styles.paymentIcon}*/}
-                {/*/>*/}
-                {/*<div>{PAYMENT_METHODS[PaymentMethod.KASPI_PAY].label}</div>*/}
-              </div>
-            ) : (
-              <div className={styles.paymentBlock}>
-                <div>{PAYMENT_METHODS[PaymentMethod.ON_DELIVERY].label}</div>
-              </div>
-              // <Switch
-              //   values={PAYMENT_METHODS}
-              //   onOptionClick={(value: string) => props.setFieldValue('paymentMethod', value)}
-              // />
-            )}
+            {/*{props.values.deliveryType === DeliveryType.DELIVERY ? (*/}
+            {/*  <div className={styles.paymentBlock}>*/}
+            {/*    <img*/}
+            {/*      src={PAYMENT_METHODS[PaymentMethod.KASPI_PAY].icon}*/}
+            {/*      className={styles.paymentIcon}*/}
+            {/*    />*/}
+            {/*    <div>{PAYMENT_METHODS[PaymentMethod.KASPI_PAY].label}</div>*/}
+            {/*  </div>*/}
+            {/*) : (*/}
+            <div className={styles.paymentBlock}>
+              <div>{PAYMENT_METHODS[PaymentMethod.ON_DELIVERY].label}</div>
+            </div>
+            {/*  <Switch*/}
+            {/*    values={PAYMENT_METHODS}*/}
+            {/*    onOptionClick={(value: string) => props.setFieldValue('paymentMethod', value)}*/}
+            {/*  />*/}
+            {/*)}*/}
           </div>
           <div className={styles.agreementContainer}>
             <div className={styles.checkboxContainer}>

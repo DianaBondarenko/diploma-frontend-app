@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import * as Styled from './Footer.styles';
-import logo from '../../global/media/footer-logo.svg';
+import styles from './Footer.module.scss';
+import logo from '../../global/media/logo-dark.svg';
 import telegramLogo from '../../global/media/footer-telegram-logo.svg';
 import viberLogo from '../../global/media/footer-viber-logo.svg';
 import phoneIcon from '../../global/media/footer-phone-icon.svg';
@@ -22,33 +22,33 @@ const Footer = () => {
   ];
 
   return (
-    <Styled.FooterContainer>
-      <Styled.FooterContentContainer>
-        <Styled.FooterContentBlock>
-          <Styled.FooterLeftBlock>
+    <div className={styles.mainContainer}>
+      <div className={styles.contentContainer}>
+        <div className={styles.contentBlock}>
+          <div className={styles.leftBlock}>
             <img src={logo} alt="application logo" />
-            <div className="description">{t('Footer.DESCRIPTION')}</div>
-          </Styled.FooterLeftBlock>
-          <Styled.FooterRightBlock>
-            <Styled.FooterLinks>
+            <div className={styles.description}>{t('Footer.DESCRIPTION')}</div>
+          </div>
+          <div className={styles.rightBlock}>
+            <div className={styles.linksContainer}>
               {icons.map((item) => (
                 <a href={item.route} key={item.key}>
                   <img src={item.icon} alt={item.key} className="icon" />
                 </a>
               ))}
-            </Styled.FooterLinks>
-            <Styled.FooterPhone>
+            </div>
+            <div className={styles.phoneContainer}>
               <div className="icon">
                 <img src={phoneIcon} alt="phone icon" />
               </div>
               <a href={`tel: ${process.env.REACT_APP_CONTACT_NUMBER}`}>
                 {process.env.REACT_APP_CONTACT_NUMBER}
               </a>
-            </Styled.FooterPhone>
-          </Styled.FooterRightBlock>
-        </Styled.FooterContentBlock>
-      </Styled.FooterContentContainer>
-    </Styled.FooterContainer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

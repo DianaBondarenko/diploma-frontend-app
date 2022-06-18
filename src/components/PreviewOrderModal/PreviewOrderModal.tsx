@@ -37,7 +37,6 @@ const PreviewOrderModal: FC<CheckoutModalProps> = ({
           ...orderPageInitialState.orderPage.order,
           shopId,
           products,
-          phoneNumber: '',
         })
       );
       history.push(ORDER_ROUTE);
