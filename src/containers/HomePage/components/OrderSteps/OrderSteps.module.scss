@@ -37,8 +37,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e3f0f0;
-  border: 1px solid #b2dde1;
+  background-color: $background;
+  border: 1px solid $stroking;
   border-radius: 100%;
 
   svg {
