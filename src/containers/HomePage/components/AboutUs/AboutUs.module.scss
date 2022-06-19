@@ -1,0 +1,25 @@
+@import '../../../../global/styles/palette';
+
+.aboutUsContainer {
+  margin-top: 40px;
+  width: 650px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  color: $primary;
+}
+
+.subtitle {
+  color: $secondary;
+  font-size: 14px;
+  margin: 16px 0;
+
+  .firstPart {
+  }
+
+  .secondPart {
+    margin-top: 10px;
+  }
+}
