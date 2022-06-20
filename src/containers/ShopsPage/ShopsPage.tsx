@@ -106,7 +106,6 @@ const ShopsPage = () => {
                       onShopChoice={() => {
                         handleProductsModal(shop);
                       }}
-                      // onCheckout={() => {}}
                       isSelected={shop.id === activeShop?.id}
                     />
                     <div className={styles.cardDivider} />
@@ -121,6 +120,7 @@ const ShopsPage = () => {
             shopsData={shopsPlaceMarkInfo}
             userLocation={userLocation}
             activeShop={activeShop}
+            setActiveShop={setActiveShop}
           />
         </div>
       </div>

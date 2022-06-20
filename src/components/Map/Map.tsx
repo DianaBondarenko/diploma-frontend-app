@@ -10,6 +10,7 @@ import { MappedShopData } from '../../containers/ShopsPage/types';
 import styles from './Map.module.scss';
 import greenMarker from '../../global/media/placemark-green.svg';
 import redMarker from '../../global/media/placemark-red.svg';
+import userLocationMarker from '../../global/media/user-placemark.svg';
 
 const containerStyle = {
   width: '100%',
@@ -21,17 +22,28 @@ export interface ShopPlaceMarkInfo extends MappedShopData {
   totalCountDesired: number;
 }
 
+export interface LatLon {
+  lat: number;
+  lng: number;
+}
+
 interface MapProps {
   shopsData: ShopPlaceMarkInfo[] | null;
   userLocation: Coordinate | null;
   activeShop: MappedShopData | null;
+  setActiveShop: (shopData: MappedShopData | null) => void;
 }
 
-const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
+const Map = ({
+  shopsData,
+  userLocation,
+  activeShop,
+  setActiveShop,
+}: MapProps) => {
   const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY as string;
-  const defaultCenter = [0, 0] as Coordinate;
+  const DEFAULT_CENTER = [49.84302, 24.026942] as Coordinate;
 
-  const getLatLon = (coordinate: Coordinate) => ({
+  const getLatLon = (coordinate: Coordinate): LatLon => ({
     lat: coordinate[0],
     lng: coordinate[1],
   });
@@ -43,8 +55,11 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
     if (shopsData) {
       getLatLon(shopsData[0].coordinates);
     }
-    return getLatLon(defaultCenter);
+    return getLatLon(DEFAULT_CENTER);
   };
+
+  const center = getMapCenter();
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: GOOGLE_API_KEY,
@@ -52,6 +67,7 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [currentCenter, setCurrentCenter] = useState<LatLon>(center);
   const [activeMark, setActiveMark] = useState<MappedShopData | null>(null);
 
   const onLoad = useCallback((map) => {
@@ -64,11 +80,19 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
 
   const handleSelectShop = (shopData: MappedShopData) => {
     setActiveMark(shopData);
+    setActiveShop(shopData);
     map?.panTo(getLatLon(shopData.coordinates));
   };
 
   const handleMarkerClick = (shopData: MappedShopData) => {
     handleSelectShop(shopData);
+  };
+
+  const handleInfoWindowClose = () => {
+    setActiveMark(null);
+    if (map && activeShop) {
+      map.panTo(getLatLon(activeShop.coordinates));
+    }
   };
 
   useEffect(() => {
@@ -77,11 +101,17 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
     }
   }, [activeShop]);
 
+  useEffect(() => {
+    if (userLocation) {
+      setCurrentCenter(getLatLon(userLocation));
+    }
+  }, [userLocation]);
+
   return isLoaded ? (
     // @ts-ignore
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={getMapCenter()}
+      center={currentCenter}
       zoom={13}
       onLoad={onLoad}
       onUnmount={onUnmount}
@@ -106,13 +136,15 @@ const Map = ({ shopsData, userLocation, activeShop }: MapProps) => {
           />
         );
       })}
+      {userLocation && (
+        // @ts-ignore
+        <Marker position={getLatLon(userLocation)} icon={userLocationMarker} />
+      )}
       {activeMark && (
         // @ts-ignore
         <InfoWindow
           position={getLatLon(activeMark.coordinates)}
-          onCloseClick={() => {
-            setActiveMark(null);
-          }}
+          onCloseClick={handleInfoWindowClose}
         >
           <div className={styles.infoWindowContainer}>
             <div className={styles.shopName}>{activeMark.name}</div>
