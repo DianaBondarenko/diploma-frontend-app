@@ -243,7 +243,9 @@ const ProductCard = ({
       )}
       {isSearch && (
         <Button
-          variant={ButtonVariant.OUTLINED}
+          variant={
+            isAddedToCart ? ButtonVariant.CONTAINED : ButtonVariant.OUTLINED
+          }
           onClick={handleCartClick}
           text={hasPrice ? buttonCartText : t('ProductCard.UNAVAILABLE_TEXT')}
           fullWidth
