@@ -3,9 +3,7 @@ import { DeliveryType, PaymentMethod } from '../../global/types';
 
 export interface OrderData {
   shopId: string;
-  // phoneNumber: string;
   products: MappedProposalData[];
-  // paymentMethod: PaymentMethod;
   deliveryType: DeliveryType;
 }
 

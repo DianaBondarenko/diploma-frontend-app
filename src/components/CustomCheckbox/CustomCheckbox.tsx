@@ -1,4 +1,4 @@
-import * as Styled from './CustomCheckbox.styles';
+import styles from './CustomCheckBox.module.scss';
 
 interface CustomCheckboxProps {
   title?: string;
@@ -16,8 +16,10 @@ const CustomCheckbox = ({
   errorChecked,
 }: CustomCheckboxProps) => {
   return (
-    <Styled.CustomCheckboxContainer
-      className={`${errorChecked && 'error-checkbox'}`}
+    <div
+      className={`${styles.mainContainer} ${
+        errorChecked && styles.errorCheckbox
+      }`}
     >
       <input
         id={id}
@@ -26,10 +28,10 @@ const CustomCheckbox = ({
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      <label htmlFor={id} className="filter-title">
+      <label htmlFor={id} className={styles.checkboxTitle}>
         {title}
       </label>
-    </Styled.CustomCheckboxContainer>
+    </div>
   );
 };
 

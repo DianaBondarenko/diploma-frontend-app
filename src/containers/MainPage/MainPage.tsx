@@ -1,5 +1,4 @@
 import { Route, Switch } from 'react-router-dom';
-import withAuth from '../../global/hocs/withAuth';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import HomePage from '../HomePage';
@@ -32,4 +31,4 @@ const MainPage = () => {
   );
 };
 
-export default withAuth(MainPage);
+export default MainPage;

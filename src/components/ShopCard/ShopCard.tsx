@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styles from './ShopCard.module.scss';
-import { ECONOMY_TEXT, UNAVAILABLE_TEXT } from './constants';
-// import { PriceHelper } from '../../global/helpers';
+import { UNAVAILABLE_TEXT } from './constants';
 import shopImage from '../../global/media/shop-default-image.svg';
 import Button from '../Button';
 
@@ -19,7 +18,6 @@ interface ShopCardProps {
 
 const ShopCard = (props: ShopCardProps) => {
   const {
-    id,
     name,
     description,
     address,
@@ -70,12 +68,6 @@ const ShopCard = (props: ShopCardProps) => {
               {t('ShopCard.CURRENCY')}
             </span>
           </div>
-          {/* {price - servicePrice > 0 && ( */}
-          {/*  <div className={styles.economyContainer}> */}
-          {/*    {ECONOMY_TEXT(PriceHelper.stripZeros(price - servicePrice))} */}
-          {/*    <span className={styles.superscript}>*</span> */}
-          {/*  </div> */}
-          {/* )} */}
         </div>
       </div>
       <div className={styles.orderButton}>

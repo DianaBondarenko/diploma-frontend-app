@@ -27,17 +27,15 @@ const CartPage = () => {
         </div>
         {productsInCartCount > 0 ? (
           <div className={styles.cartContainer}>
-            {Object.values(products)
-              // ?.sort(sortByAlphabet)
-              .map((item) => (
-                <div key={item.id} className={styles.card}>
-                  <ProductCard
-                    variant={ProductCardVariant.CART}
-                    {...item}
-                    fromCart
-                  />
-                </div>
-              ))}
+            {Object.values(products).map((item) => (
+              <div key={item.id} className={styles.card}>
+                <ProductCard
+                  variant={ProductCardVariant.CART}
+                  {...item}
+                  fromCart
+                />
+              </div>
+            ))}
           </div>
         ) : (
           <div className={styles.contactBannerContainer} />

@@ -43,10 +43,6 @@ const ProductPage = ({ match }: RouteComponentProps) => {
     }
   };
 
-  const handleGoToCart = () => {
-    history.push(CART_ROUTE);
-  };
-
   const buttonText = isAddedToCart
     ? t('ProductPage.ACTIVE_BUTTON_TEXT')
     : t('ProductPage.INACTIVE_BUTTON_TEXT');

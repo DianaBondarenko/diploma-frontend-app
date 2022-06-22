@@ -74,17 +74,6 @@ const ShopsPage = () => {
           <div className={styles.title}>{t('ShopsPage.TITLE_TEXT')}</div>
           {shopsData && (
             <>
-              {/* <FilterSortOptions */}
-              {/*    isAscendingOption={isAscendingOption} */}
-              {/*    onSortingDirectionChange={handleSortingDirectionChange} */}
-              {/*    selectedSortOption={selectedSortOption} */}
-              {/*    isPopoverShow={isSortPopoverShow} */}
-              {/*    onSortOptionChange={handleSortOptionChange} */}
-              {/*    onPopoverOpen={handleSortPopoverOpen} */}
-              {/*    onPopoverClose={handleSortPopoverClose} */}
-              {/*    filterByAvailability={filterByAvailability} */}
-              {/*    onFilterByAvailabilityChange={handleFilterByAvailabilityChange} */}
-              {/* /> */}
               <div className={styles.shopsCount}>
                 {getProposalsCount(shopsData.length)}
               </div>

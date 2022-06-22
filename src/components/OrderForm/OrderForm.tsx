@@ -375,23 +375,9 @@ const OrderForm = ({
             >
               {t('OrderForm.PAYMENT_LABEL')}
             </label>
-            {/* {props.values.deliveryType === DeliveryType.DELIVERY ? ( */}
-            {/*  <div className={styles.paymentBlock}> */}
-            {/*    <img */}
-            {/*      src={PAYMENT_METHODS[PaymentMethod.KASPI_PAY].icon} */}
-            {/*      className={styles.paymentIcon} */}
-            {/*    /> */}
-            {/*    <div>{PAYMENT_METHODS[PaymentMethod.KASPI_PAY].label}</div> */}
-            {/*  </div> */}
-            {/* ) : ( */}
             <div className={styles.paymentBlock}>
               <div>{PAYMENT_METHODS[PaymentMethod.ON_DELIVERY].label}</div>
             </div>
-            {/*  <Switch */}
-            {/*    values={PAYMENT_METHODS} */}
-            {/*    onOptionClick={(value: string) => props.setFieldValue('paymentMethod', value)} */}
-            {/*  /> */}
-            {/* )} */}
           </div>
           <div className={styles.agreementContainer}>
             <div className={styles.checkboxContainer}>

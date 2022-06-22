@@ -1,11 +1,11 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import * as Styled from './Loader.styles';
+import styles from './Loader.module.scss';
 
 const Loader = () => {
   return (
-    <Styled.LoaderContainer>
+    <div className={styles.mainContainer}>
       <CircularProgress size={75} />
-    </Styled.LoaderContainer>
+    </div>
   );
 };
 

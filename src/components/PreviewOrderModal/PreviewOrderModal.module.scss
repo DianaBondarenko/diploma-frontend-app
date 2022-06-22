@@ -22,7 +22,6 @@
   background-color: $white;
   border-radius: 8px;
   z-index: 400;
-  //height: 100vh;
   max-height: calc(100vh - 110px);
   overflow: hidden;
 
@@ -166,11 +165,5 @@
         color: $focus;
       }
     }
-  }
-
-  .applicationControlsContainerInsideModal {
-    position: fixed !important;
-    z-index: 300;
-    bottom: 0;
   }
 }
